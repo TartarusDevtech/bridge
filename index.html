@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sardis Network Bridge</title>
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="icon" type="image/png" href="assets/img/Sardis NetworkIconFavicon.png"/>
+	<link rel="stylesheet" href="assets/css/alertify.min.css">
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<header>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="#">
+						<img src="assets/img/logo.png" alt="Logo" srcset="">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					  <span class="navbar-toggler-icon"></span>
+					</button>
+				  
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					  <ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+						  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+						</li>
+					  </ul>
+					  <form class="form-inline my-2 my-lg-0">
+						<button class="btn btn-default connect-btn my-2 my-sm-0" id="connectWallet">Connect Wallet</button>
+					  </form>
+					</div>
+				  </nav>
+			</header>
+		</div>
+		<div class="container">
+			<div id="wrapper" class="row">
+				<div id="firstDiv" class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+					<div class="box-left">
+						<div class="box-left-inner">
+							<div class="header-title">
+								Sardis Network Bridge
+							</div>
+							<div class="p-text">
+								The safe, fast and most secure way to bring cross-chain assets to Sardis Network chains.
+							</div>
+							<div class="btn-video">
+								<a href="#" class="btn btn-outline-primary" role="button" aria-pressed="true"><i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Introduction video</a>
+							</div>
+							<div class="links mt-3">
+								<a href="proof-of-assets.html" >View Proof of Assets</a>
+							</div>
+							<div class="links mt-3">
+								<a href="/history.html" >Transaction History </a>
+							</div>
+						</div>
+						<div class="brand-img">
+							<img src="assets/img/hexagons-light.png" class="styled__HexagonImg-sc-62hwj-3 leCSOp">
+						</div>
+					</div>
+				</div>
+				<div id="secondDiv" class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+					<div class="box-right">
+						
+						<div class="assets">
+							<label for="inputEmail4">Assets From</label>
+							<div class="dropdown dropdown-custom">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="assetFromUL" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)
+								</button>
+								
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+										  <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+										</div>
+										<input type="text" class="form-control search-box" aria-label="Amount (to the nearest dollar)">
+										<div class="input-group-append">
+										  <span class="input-group-text"><i class="fa fa-times" aria-hidden="true"></i></span>
+										</div>
+									  </div>
+
+									<ul class="list-group" id="assetFrom">
+										<li id="assetFromDith" class="list-group-item d-flex justify-content-between align-items-center" data-name="eth">
+											<img src="assets/img/eth-icon.svg" class="mr-3" alt="ETH">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">ETH</h5>
+											  <span>Ethereum</span>
+											</div>
+										  <span id="ethTokencheck"  class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="dith">
+											<img src="assets/img/eth-icon.svg" class="mr-3" alt="DITH">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">ETH</h5>
+											  <span>Sardis Network</span>
+											</div>
+										  <span id="dithTokencheck" style="display: none;" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="bnb">
+											<img src="assets/img/bnb-logo.png" class="mr-3" alt="BNB" style="    width: 24px;">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">BNB</h5>
+											  <span>Binance</span>
+											</div>
+											<span style="display: none;" id="bscTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="dbnb">
+											<img src="assets/img/bnb-logo.png" class="mr-3" alt="BNB" style="    width: 24px;">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">BNB</h5>
+											  <span>Sardis Network</span>
+											</div>
+											<span style="display: none;" id="dbscTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="matic">
+											<img src="assets/img/tether-usdt-logo.png" class="mr-3 img-small" alt="MATIC">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">MATIC</h5>
+											  <span>Polygon</span>
+											</div>
+											<span style="display: none;" id="maticTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="dmatic">
+											<img src="assets/img/tether-usdt-logo.png" class="mr-3 img-small" alt="MATIC">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">MATIC</h5>
+											  <span>Sardis Network</span>
+											</div>
+											<span style="display: none;" id="dmaticTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="ht">
+											<img src="assets/img/heco-logo.png" class="mr-3 img-small" alt="HT">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">HT</h5>
+											  <span>Hecochain</span>
+											</div>
+											<span style="display: none;" id="hecoTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="dht">
+											<img src="assets/img/heco-logo.png" class="mr-3 img-small" alt="HT">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">HT</h5>
+											  <span>Sardis Network</span>
+											</div>
+											<span style="display: none;" id="dhecoTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="trx">
+											<img src="assets/img/tron-logo.png" class="mr-3 img-small" alt="TRX">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">TRX</h5>
+											  <span>TRON</span>
+											</div>
+											<span style="display: none;" id="trxTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<!-- <li class="list-group-item d-flex justify-content-between align-items-center" data-name="dtrx">
+											<img src="assets/img/tron-logo.png" class="mr-3 img-small" alt="DTRX">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">TRX</h5>
+											  <span>Ditherum</span>
+											</div>
+											<span style="display: none;" id="dhecoTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li> -->
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="dusd">
+											<img src="assets/img/tether-usdt-logo.png" class="mr-3 img-small" alt="DUSD">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">DUSD</h5>
+											  <span>Sardis Network</span>
+											</div>
+											<span style="display: none;" id="dusdTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="usdt">
+											<img src="assets/img/tether-usdt-logo.png" class="mr-3 img-small" alt="USDT">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">USDT</h5>
+											  <span>TetherUs</span>
+											</div>
+											<span style="display: none;" id="usdtTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="usdtbsc">
+											<img src="assets/img/tether-usdt-logo.png" class="mr-3 img-small" alt="USDT">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">USDT</h5>
+											  <span>Binance</span>
+											</div>
+											<span style="display: none;" id="usdtbscTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="usdc">
+											<img src="assets/img/usdc-logo.png" class="mr-3 img-small" alt="USDC">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">USDC</h5>
+											  <span>Ethereum</span>
+											</div>
+											<span style="display: none;" id="usdcTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="busd">
+											<img src="assets/img/busd-logo.png" class="mr-3 img-small" alt="BUSD">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">BUSD</h5>
+											  <span>Binance</span>
+											</div>
+											<span style="display: none;" id="busdTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="dai">
+											<img src="assets/img/dai-logo.png" class="mr-3 img-small" alt="DAI">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">DAI</h5>
+											  <span>Ethereum</span>
+											</div>
+											<span style="display: none;" id="daiTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="pax">
+											<img src="assets/img/pax-logo.png" class="mr-3 img-small" alt="PAX">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">PAX</h5>
+											  <span>Ethereum</span>
+											</div>
+											<span style="display: none;" id="paxTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+									  </ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class="assets">
+							<label for="inputEmail4">Assets To</label>
+							<div class="dropdown dropdown-custom">
+								<button class="btn btn-secondary dropdown-toggle disabled" type="button" id="assetToUl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardis Network Network)
+								</button>					
+							</div>
+						</div>
+
+						<div class="amount">
+							<label for="inputAmount">Amount</label>
+							<input class="form-control amount-textbox" type="number" id="tokenAmount" value="0">
+						</div>
+						<div class="jzBSFA">
+							<span>You will receive</span>
+							<span class="hnyPJs">≈</span>
+							<img id="receiveTokenImg" class="icons" src="assets/img/eth-icon.svg" style="width: 16px;">&nbsp;<span id="reciveToken">0</span>&nbsp;<span id="reciveName">ETH</span>&nbsp;
+							<span id="feeText" style="display: none;">(Fee  10$ of ETH)</span>
+							<!-- <span class="styled__BadgeWrapper-xwou8c-34 tcVGd">
+								<span class="badge badge-warning">BEP20</span>
+							</span> -->
+						</div>
+						<div class="connect-wallet mt-5">
+							<button type="button" id="connectWallet1" class="btn btn-priamry btn-block connect-btn">Connect Wallet</button>
+							<button type="button" id="btnNext" class="btn btn-priamry btn-block connect-btn" style="display: none;">Next</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="footer-inner">
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<a href="">Terms of Use</a>
+					<p class="m-0">© 2021 - 2021 Sardis Network. All rights reserved.</p>
+				</div> 
+				<div class="col-md-6 col-sm-6">
+					<ul class="nav justify-content-end social-media">
+					  <li class="nav-item">
+					    <a class="nav-link" href="https://t.me/Sardis Network" target="_blank"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" href="https://twitter.com/Sardis Network" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+					  </li>
+					  <li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle bTTabq" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          <i class="fa fa-globe" aria-hidden="true"></i> <span>English</span>
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				          <a class="dropdown-item" href="#">English</a>
+				      
+				        </div>
+				      </li>
+					</ul>
+				</div>
+			</div>
+			</div>
+		</footer>
+	</div>
+	<script src="assets/js/jquery-3.5.1.slim.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js"></script>
+	<script src="assets/js/alertify.js"></script>
+	<script src="assets/js/general.js"></script>
+	<script src="assets/js/script.js"></script>
+</body>
+</html>

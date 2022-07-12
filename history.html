@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sardis Network Bridge - History</title>
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="icon" type="image/png" href="assets/img/Sardis NetworkIconFavicon.png"/>
+    <link rel="stylesheet" href="assets/css/alertify.min.css">
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<header>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="#">
+						<img src="assets/img/Sardis Network-logo-horizontal-blue.svg" alt="" srcset="">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					  <span class="navbar-toggler-icon"></span>
+					</button>
+				  
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					  <ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+						  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+						</li>
+					  </ul>
+					  <form class="form-inline my-2 my-lg-0">
+						<button class="btn btn-primary connect-btn my-2 my-sm-0" id="connectWallet" type="submit">Connect Wallet</button>
+					  </form>
+					</div>
+				</nav>
+			</header>
+		</div>
+		<div class="container">
+			<div id="wrapper" class="row">
+				<div id="firstDiv" class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+					<div class="box-left">
+						<div class="header-title">
+							Sardis Network Bridge
+						</div>
+						<div class="p-text">
+							The safe, fast and most secure way to bring cross-chain assets to Sardis Network chains.
+						</div>
+						<div class="btn-video">
+							<a href="#" class="btn btn-outline-primary" role="button" aria-pressed="true"><i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Introduction video</a>
+						</div>
+						<div class="links mt-3">
+							<a href="/proof-of-assets.html" >View Proof of Assets</a>
+						</div>
+						<div class="links mt-3">
+							<a href="/history.html" >Trasaction History</a>
+						</div>
+						<div class="brand-img">
+							<img src="assets/img/hexagons-light.png" class="styled__HexagonImg-sc-62hwj-3 leCSOp">
+						</div>
+					</div>
+				</div>
+				<div id="secondDiv" class="col-xl-8 col-lg-8 col-md-8 col-sm-12 assets-proof">
+					<div class="box-right p-2 mb-3">
+						<div class="main-text text-center">
+							<h2>History</h2>
+							<p id="walletAddress">0x891967Abb9574EF74eE69FbDF43C3eF0b049DDD5</p>
+						</div>
+					</div>
+					<div class="box-right history p-2">
+						<div class="assets mt-0 table-responsive">
+							<table class="table table-hover history-table table-sm">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Amount <br>/ From  (Network)</th>
+                                    <th scope="col">Amount Received<br> /To (Network)</th>
+                                    <th scope="col">Network Fee <br>/ Create Time</th>
+                                    <th scope="col">Order ID</th>
+                                  </tr>
+                                </thead>
+                                 <tbody id="historyTable" class="text-center"><tr><td colspan="5">Loading Data Please wait...</td></tr>
+                                </tbody>
+                              </table>
+                              
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="footer-inner">
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<a href="">Terms of Use</a>
+					<p class="m-0">© 2021 - 2021 Sardis Network. All rights reserved.</p>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<ul class="nav justify-content-end social-media">
+					  <li class="nav-item">
+					    <a class="nav-link" href="https://t.me/Sardis Network"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" href="https://twitter.com/Sardis Network" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+					  </li>
+					  <li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle bTTabq" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          <i class="fa fa-globe" aria-hidden="true"></i> <span>English</span>
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				          <a class="dropdown-item" href="#">English</a>
+				        </div>
+				      </li>
+					</ul>
+				</div>
+			</div>
+			</div>
+		</footer>
+	</div>
+	<script src="assets/js/jquery-3.5.1.slim.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js"></script>
+	<script src="assets/js/alertify.js"></script>
+	<script src="assets/js/general.js"></script>
+	<script src="assets/js/history.js?v=0.0.1"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+            })
+    </script>
+</body>
+</html>
