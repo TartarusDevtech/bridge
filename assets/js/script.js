@@ -12,7 +12,7 @@ var global = {
 if(window.ethereum){
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       if (isMobile && window.ethereum.isMetaMask==true){
-            var myweb3 = new Web3("https://rinkeby.infura.io/v3/API_KEY");
+            var myweb3 = new Web3("https://rinkeby.infura.io/v3/81072921998748a4b1199468ab287baf");
      }else{
          const oldProvider = web3.currentProvider; // keep a reference to metamask provider
          var myweb3 = new Web3(oldProvider);
@@ -28,7 +28,7 @@ if(window.ethereum){
        }
     }
 }else{
-        var myweb3 = new Web3( Web3.givenProvider || "https://rinkeby.infura.io/v3/API_KEY");
+        var myweb3 = new Web3( Web3.givenProvider || "https://rinkeby.infura.io/v3/81072921998748a4b1199468ab287baf");
         const oldProvider = myweb3.currentProvider; // keep a reference to metamask provider
         var myweb3 = new Web3(oldProvider);
 }
