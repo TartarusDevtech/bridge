@@ -11,7 +11,7 @@ var global = {
 }
 if(window.ethereum){
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (isMobile && window.ethereum.isMetaMask==true){
+     if (isMobile && window.ethereum.isMetaMask==true){                                   
             var myweb3 = new Web3("https://rinkeby.infura.io/v3/81072921998748a4b1199468ab287baf");
      }else{
          const oldProvider = web3.currentProvider; // keep a reference to metamask provider
@@ -117,7 +117,7 @@ $("#connectWallet,#connectWallet1").click(async function(e){
 //token select 
 $('#assetFrom li').click(function(){
     var name = $(this).data('name');
-    
+    console.log(">>>>> NAme >>>", name);
     if(name=="srdx"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardis Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
