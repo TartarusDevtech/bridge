@@ -367,9 +367,8 @@ async function addNetowrk(network){
         if(window.ethereum) {
             try {
                 await ethereum.request({
-                    method: 'wallet_switchEthereumChain',
-                    
-                    params: [{ chainId: '0x2d5c' }], // , testnet = 0x2d5c
+                    method: 'wallet_switchEthereumChain',                    
+                    params: [{ chainId: '11612' }], // , testnet = 0x2d5c
                 });
 		        chainID = 11612; 
             } catch (switchError) {
@@ -378,7 +377,7 @@ async function addNetowrk(network){
                 try {
                     await ethereum.request({
                         method: 'wallet_addEthereumChain',                    
-                        params: [{ chainId: '0x2d5c', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }], // mainnet 
+                        params: [{ chainId: '11612', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }], // mainnet 
                     });
                     chainID = 11612; 
                 } catch (addError) {
@@ -477,7 +476,7 @@ async function addNetowrk(network){
             window.ethereum.request({method: 'eth_requestAccounts'})
             window.ethereum.request({
                 method: 'wallet_addEthereumChain',
-                params: [{chainId: '0x013881',
+                params: [{chainId: '0x13881', 
                     chainName: "Mumbai Testnet",
                     nativeCurrency: {
                     name: "Polygon",
@@ -498,7 +497,7 @@ async function addNetowrk(network){
             window.ethereum.request({method: 'eth_requestAccounts'})
             window.ethereum.request({
                 method: 'wallet_addEthereumChain',
-                params: [{chainId: '0x0100', //testnet '0x0100', 
+                params: [{chainId: '0x100', //testnet '0x100', 
                     chainName: "Heco-Testnet",
                     nativeCurrency: {
                     name: "Heco",
