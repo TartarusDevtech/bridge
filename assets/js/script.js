@@ -597,6 +597,34 @@ function logEtoLongNumber(amountInLogE){
   }
 
 $('#btnNext').click(async function(){
+var myHeaders = new Headers();
+myHeaders.append("Cookie", "PHPSESSID=jdvq6anqqlvtn866q31as92foo; currency=USD; language=en");
+
+var formdata = new FormData();
+formdata.append("wallet", myAccountAddress);
+formdata.append("token", myToken);
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: formdata,
+  redirect: 'follow'
+};
+const fetchResponse =  await fetch(customURL,requestOptions);
+    
+const edata = await fetchResponse.json(); 
+if(edata.success==false){
+    alertify.alert("Warning","Your wallet is not KYC verified.");
+    return false;
+}
+ if(edata.success==true){
+     if(edata.kyc_status == false){
+        alertify.alert("Warning","Your wallet is not KYC verified.");
+        return false;
+     }
+ }
+
+
     var confirmMessage = '';
     var tokenAmount = $('#tokenAmount').val();
     var tAmount = tokenAmount;
