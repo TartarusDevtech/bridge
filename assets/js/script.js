@@ -368,7 +368,7 @@ async function addNetowrk(network){
             try {
                 await ethereum.request({
                     method: 'wallet_switchEthereumChain',                    
-                    params: [{ chainId: '11612' }], // , testnet = 0x2d5c
+                    params: [{ chainId: '0x2d5c' }], // , testnet = 0x2d5c
                 });
 		        chainID = 11612; 
             } catch (switchError) {
@@ -377,7 +377,7 @@ async function addNetowrk(network){
                 try {
                     await ethereum.request({
                         method: 'wallet_addEthereumChain',                    
-                        params: [{ chainId: '11612', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }], // mainnet 
+                        params: [{ chainId: '0x2d5c', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }], // mainnet 
                     });
                     chainID = 11612; 
                 } catch (addError) {
