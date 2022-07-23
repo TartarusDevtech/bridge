@@ -11,7 +11,7 @@ var global = {
 }
 if(window.ethereum){
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-     if (isMobile && window.ethereum.isMetaMask==true){                                   
+      if (isMobile && window.ethereum.isMetaMask==true){
             var myweb3 = new Web3("https://rinkeby.infura.io/v3/81072921998748a4b1199468ab287baf");
      }else{
          const oldProvider = web3.currentProvider; // keep a reference to metamask provider
@@ -45,7 +45,7 @@ async function checkAccount() {
                 }
                 const shortAddress = getUserAddress(myAccountAddress);
                 $('#connectWallet,#connectWallet1').html(shortAddress);
-                $('#connectWallet,#connectWallet1').attr("href", "https://rinkeby.etherscan.io/address/"+myAccountAddress).attr('target','_blank');
+                $('#connectWallet,#connectWallet1').attr("href", "https://etherscan.io/address/"+myAccountAddress).attr('target','_blank');
                 $('#connectWallet1').hide();
                 $('#btnNext').show();
             }
@@ -62,7 +62,7 @@ async function checkAccount() {
                         }
                         const shortAddress = getUserAddress(myAccountAddress);
                         $('#connectWallet,#connectWallet1').html(shortAddress);
-                        $('#connectWallet,#connectWallet1').attr("href", "https://rinkeby.etherscan.io/address/"+myAccountAddress).attr('target','_blank');
+                        $('#connectWallet,#connectWallet1').attr("href", "https://etherscan.io/address/"+myAccountAddress).attr('target','_blank');
                         $('#connectWallet1').hide();
                         $('#btnNext').show();
                     }
@@ -117,7 +117,7 @@ $("#connectWallet,#connectWallet1").click(async function(e){
 //token select 
 $('#assetFrom li').click(function(){
     var name = $(this).data('name');
-    console.log(">>>>> NAme >>>", name);
+    
     if(name=="srdx"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardis Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
@@ -175,7 +175,7 @@ $('#assetFrom li').click(function(){
         $('#feeText').hide();        
         addNetowrk('SRDX');
     }
-    if(name=="trx"){
+    if(name=="trx"){        
         $('#assetFromUL').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (TRON Network)');
         $('#assetTo li').addClass("disabled2");
         $('#assetToUl').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (Sardis Network)');
@@ -196,7 +196,7 @@ $('#assetFrom li').click(function(){
         $('#assetToUl').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (TRON Network)');
         asset_Name = 'dtrx';
         asset_To = 'trx';
-        network_From = 'dith';
+        network_From = 'srdx';
         network_To = 'trx';
         $('.tokenCheck').hide();
         $('#dtrxTokencheck').show();
@@ -235,7 +235,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="ht"){
         asset_Name = 'ht';
-        asset_To = 'dith';
+        asset_To = 'srdx';
         network_From = 'heco';
         network_To = 'srdx';
         $('#assetFromUL').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Heco Network)');
@@ -245,7 +245,7 @@ $('#assetFrom li').click(function(){
         $('#receiveTokenImg').attr('src','assets/img/heco-logo.png');
         $('#reciveName').html('HT');
         $('#feeText').hide();
-        addNetowrk('HECO');
+        addNetowrk('HECO');;
     }
     if(name=="dht"){
         asset_Name = 'dht';
@@ -259,7 +259,7 @@ $('#assetFrom li').click(function(){
         $('#receiveTokenImg').attr('src','assets/img/heco-logo.png');
         $('#reciveName').html('HT');
         $('#feeText').hide();
-        addNetowrk('SRDX');
+        addNetowrk('SRDX');;
     }
     if(name=="dusd"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis Network)');
@@ -272,8 +272,7 @@ $('#assetFrom li').click(function(){
         $('#dusdTokencheck').show();
         addNetowrk('SRDX');
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
-        $('#reciveName').html('USDT');
-        //$('#feeText').html('(Fee 10 USDT)');
+        $('#reciveName').html('USDT');        
         $('#feeText').hide();
     }
     if(name=="usdt"){
@@ -361,27 +360,27 @@ $('#assetFrom li').click(function(){
         addNetowrk('ETH');
     }
 });
-//add networks Sardis
+//add networks SARDIS
 async function addNetowrk(network){
     //Sardis Network
     if(network=='SRDX'){
         if(window.ethereum) {
             try {
                 await ethereum.request({
-                method: 'wallet_switchEthereumChain',
-                //params: [{ chainId: '0x1' }],
-                params: [{ chainId: '0x2d5c' }], // mainnet =  params: [{ chainId: '0x18' }], // mainnet 0x18 , testnet = 0x22
+                    method: 'wallet_switchEthereumChain',
+                    
+                    params: [{ chainId: '0x2d5c' }], // , testnet = 0x2d5c
                 });
-		        chainID = 11612; // testnet = 11612
+		        chainID = 11612; 
             } catch (switchError) {
                 // This error code indicates that the chain has not been added to MetaMask.
                 if (switchError.code === 4902) {
                 try {
-                    await ethereum.request({                          
-                    method: 'wallet_addEthereumChain',                        
-                        params: [{ chainId: '0x2d5c', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }], // testnet
+                    await ethereum.request({
+                        method: 'wallet_addEthereumChain',                    
+                        params: [{ chainId: '0x2d5c', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }], // mainnet 
                     });
-                    chainID = 11612; // testnet = 11612
+                    chainID = 11612; 
                 } catch (addError) {
                     // handle "add" error
                 }
@@ -391,23 +390,24 @@ async function addNetowrk(network){
         }
 
     }
+
+
     //Ethereum Network
     if(network=='ETH'){
         if(window.ethereum) {
             try {
                 await ethereum.request({
-                method: 'wallet_switchEthereumChain',
-                //params: [{ chainId: '0x1' }],
-                params: [{ chainId: '0x4' }],
+                    method: 'wallet_switchEthereumChain',                
+                    params: [{ chainId: '0x4' }],
                 });
-    		    chainID = 1;
+	    	    chainID = 1;
             } catch (switchError) {
                 // This error code indicates that the chain has not been added to MetaMask.
                 if (switchError.code === 4902) {
                 try {
                     await ethereum.request({
-                    method: 'wallet_addEthereumChain',                    
-                    params: [{ chainId: '0x4', rpcUrl: 'https://rinkeby.infura.io/v3/81072921998748a4b1199468ab287baf' /* ... */ }],
+                        method: 'wallet_addEthereumChain',
+                        params: [{ chainId: '0x4', rpcUrl: 'https://rinkeby.infura.io/v3/81072921998748a4b1199468ab287baf' /* ... */ }],                   
                     });
                     chainID = 4;
                 } catch (addError) {
@@ -462,8 +462,8 @@ async function addNetowrk(network){
                     name: "Binance Chain",
                     symbol: "BNB",
                     decimals: 18
-                    },                    
-                    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'], blockExplorerUrls: ['https://testnet.bscscan.com']
+                    },
+                    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],     blockExplorerUrls: ['https://testnet.bscscan.com']                    
                 }]
             })
             chainID = 97;
@@ -498,14 +498,14 @@ async function addNetowrk(network){
             window.ethereum.request({method: 'eth_requestAccounts'})
             window.ethereum.request({
                 method: 'wallet_addEthereumChain',
-                params: [{chainId: '0x0100', //testnet '0x100', 
-                    chainName: "heco-testnet",
+                params: [{chainId: '0x0100', //testnet '0x0100', 
+                    chainName: "Heco-Testnet",
                     nativeCurrency: {
                     name: "Heco",
                     symbol: "HT",
                     decimals: 18
-                    },                    
-                    rpcUrls: ['https://http-testnet.hecochain.com'],     blockExplorerUrls: ['https://testnet.hecoinfo.com/']
+                    },
+                    rpcUrls: ['https://http-testnet.hecochain.com'],     blockExplorerUrls: ['https://testnet.hecoinfo.com/']                    
                 }]
             })
             chainID = 256;
@@ -614,45 +614,45 @@ $('#btnNext').click(async function(){
                 return false;
             }   
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' ETH (Ethereum Network) to ' +  tokenAmount +' ETH (Sardis Network)';
-        }
+        }        
         if(asset_Name=='usdt'){
-            //if(tokenAmount<10){
-                //alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
-                alertify.alert("Warning","Minimum Amount is 0.01");    
+                alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             } 
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDT (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
         }
         if(asset_Name=='usdc'){
-            //if(tokenAmount<10){
-                //alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
-                    alertify.alert("Warning","Minimum Amount is 0.01");    
+                alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDC (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
         }
         if(asset_Name=='dai'){
-            //if(tokenAmount<10){
-                //alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
-                    alertify.alert("Warning","Minimum Amount is 0.01");    
+                alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' DAI (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
         }
         if(asset_Name=='pax'){
-            //if(tokenAmount<10){
-            //    alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
-                alertify.alert("Warning","Minimum Amount is 0.01");    
+                alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' PAX (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
         }
 
     }
+
+
+
+
+
+
+
+
     if(network_From=='srdx'){
         if(asset_Name=='srdx'){
             if(tokenAmount<0.0025){
@@ -661,6 +661,7 @@ $('#btnNext').click(async function(){
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' ETH (Sardis Network) to ' +  tokenAmount +' ETH (Ethereum Network)';
         }
+
         if(asset_Name=='dbnb'){
             if(tokenAmount<0.02){
                 alertify.alert("Warning","Minimum Amount is 0.02");
@@ -668,45 +669,44 @@ $('#btnNext').click(async function(){
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' BNB (Sardis Network) to ' +  tokenAmount +' BNB (Binance Network)';
         }
+
         if(asset_Name=='dmatic'){
-            //if(tokenAmount<10){
-            //    alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
-                alertify.alert("Warning","Minimum Amount is 0.01");    
+                alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' MATIC (Sardis Network) to ' +  tokenAmount +' MATIC (Polygon Network)';
-        }
+        }        
+
         if(asset_Name=='dht'){
-            //if(tokenAmount<1){
-            //    alertify.alert("Warning","Minimum Amount is 1");
             if(tokenAmount<0.01){
-                    alertify.alert("Warning","Minimum Amount is 0.01");
+                alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' HT (Sardis Network) to ' +  tokenAmount +' HT (Heco Network)';
         }
+
         if(asset_Name=='dusd'){
-            //if(tokenAmount<10){
-            //    alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' DUSD (Sardis Network) to ' +  tokenAmount +' USDT (Binance Network)';
         }
+
         if(asset_Name=='dtrx'){
-            //if(tokenAmount<10){
-            //    alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' TRX (Sardis Network) to ' +  tokenAmount +' TRX (TRON Network)';
-        }
-        
+        }        
     }
     
+
+
+
+
     if(network_From=='bsc'){
         if(asset_Name=='bnb'){
             if(tokenAmount<0.02){
@@ -715,29 +715,27 @@ $('#btnNext').click(async function(){
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' BNB (Binance Network) to ' +  tokenAmount +' BNB (Sardis Network)';
         }
+
         if(asset_Name=='usdtbsc'){
-            //if(tokenAmount<10){
-            //    alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDT (Binance Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
         }
+
         if(asset_Name=='busd'){
-            //if(tokenAmount<10){
-            //    alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
-                    alertify.alert("Warning","Minimum Amount is 0.01");
+                alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' BUSD (Binance Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
         }
     }
+
+
     if(network_From=='polygon'){
         if(asset_Name=='matic'){
-            //if(tokenAmount<10){
-            //    alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
@@ -745,10 +743,10 @@ $('#btnNext').click(async function(){
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' MATIC (Polygon Network) to ' +  tokenAmount +' MATIC (Sardis Network)';
         }
     }
+
+
     if(network_From=='heco'){
         if(asset_Name=='ht'){
-            ///if(tokenAmount<1){
-            //    alertify.alert("Warning","Minimum Amount is 1");
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
@@ -756,10 +754,9 @@ $('#btnNext').click(async function(){
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' HT (Heco Network) to ' +  tokenAmount +' HT (Sardis Network)';
         }
     }
+
     if(network_From=='trx'){
         if(asset_Name=='trx'){
-            //if(tokenAmount<10){
-            //    alertify.alert("Warning","Minimum Amount is 10");
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
@@ -767,6 +764,9 @@ $('#btnNext').click(async function(){
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' TRX (TRON Network) to ' +  tokenAmount +' TRX (Sardis Network)';
         }
     }
+
+
+
 
     alertify.confirm('Confirm Transaction', confirmMessage, async function(){
         tokenAmount = tokenAmount*1e18;
@@ -878,9 +878,9 @@ $('#btnNext').click(async function(){
         }
     }
    
-    //dith network
-    if(network_From=='dith'){
-        ethContractInstance = new myweb3.eth.Contract(SardisABI, SardisContract, {
+    //srdx network
+    if(network_From=='srdx'){
+        ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {
             from: myAccountAddress, // default from address
         });
        
@@ -890,10 +890,10 @@ $('#btnNext').click(async function(){
             usdtContractInstance =  new myweb3.eth.Contract(ethDthABI, ethDthAddress, {
                 from: myAccountAddress, // default from address
             });
-            const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+            const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
            
             if(allowance<tAmount){
-                var result = usdtContractInstance.methods.approve(SardisContract,approveAmount).send({
+                var result = usdtContractInstance.methods.approve(dithereumContract,approveAmount).send({
                     from: myAccountAddress,
                     to: ethDthAddress,
                     gasPrice: web3GasPrice,
@@ -902,11 +902,11 @@ $('#btnNext').click(async function(){
                 });
 
                 var data = ethContractInstance.methods.tokenIn(ethDthAddress,tokenAmount,chainID).encodeABI();
-                processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                
             }else{
                 var data = ethContractInstance.methods.tokenIn(ethDthAddress,tokenAmount,chainID).encodeABI();
-                processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
             }
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
@@ -917,10 +917,10 @@ $('#btnNext').click(async function(){
                 usdtContractInstance =  new myweb3.eth.Contract(usdtEthABI, usdtEthAddress, {
                     from: myAccountAddress, // default from address
                 });
-                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
                
                 if(allowance<tAmount){
-                    var result = usdtContractInstance.methods.approve(SardisContract,approveAmount).send({
+                    var result = usdtContractInstance.methods.approve(dithereumContract,approveAmount).send({
                         from: myAccountAddress,
                         to: usdtEthAddress,
                         gasPrice: web3GasPrice,
@@ -929,11 +929,11 @@ $('#btnNext').click(async function(){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                 }
 
                 //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
@@ -943,10 +943,10 @@ $('#btnNext').click(async function(){
                 usdcContractInstance =  new myweb3.eth.Contract(usdcABI, usdcAddress, {
                     from: myAccountAddress, // default from address
                 });
-                const allowance = await usdcContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+                const allowance = await usdcContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
                
                 if(allowance<tAmount){
-                    var result = usdcContractInstance.methods.approve(SardisContract,approveAmount).send({
+                    var result = usdcContractInstance.methods.approve(dithereumContract,approveAmount).send({
                         from: myAccountAddress,
                         to: usdcAddress,
                         gasPrice: web3GasPrice,
@@ -955,11 +955,11 @@ $('#btnNext').click(async function(){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(usdcAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(usdcAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                 }
 
                 //var data = ethContractInstance.methods.tokenIn(usdcAddress,tokenAmount,chainID).encodeABI();
@@ -970,10 +970,10 @@ $('#btnNext').click(async function(){
                 daiContractInstance =  new myweb3.eth.Contract(daiABI, daiAddress, {
                     from: myAccountAddress, // default from address
                 });
-                const allowance = await daiContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+                const allowance = await daiContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
                
                 if(allowance<tAmount){
-                    var result = daiContractInstance.methods.approve(SardisContract,approveAmount).send({
+                    var result = daiContractInstance.methods.approve(dithereumContract,approveAmount).send({
                         from: myAccountAddress,
                         to: daiAddress,
                         gasPrice: web3GasPrice,
@@ -982,11 +982,11 @@ $('#btnNext').click(async function(){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(daiAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(daiAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                 }
 
                 //var data = ethContractInstance.methods.tokenIn(daiAddress,tokenAmount,chainID).encodeABI();
@@ -996,10 +996,10 @@ $('#btnNext').click(async function(){
                 paxContractInstance =  new myweb3.eth.Contract(paxABI, paxAddress, {
                     from: myAccountAddress, // default from address
                 });
-                const allowance = await paxContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+                const allowance = await paxContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
                
                 if(allowance<tAmount){
-                    var result = paxContractInstance.methods.approve(SardisContract,approveAmount).send({
+                    var result = paxContractInstance.methods.approve(dithereumContract,approveAmount).send({
                         from: myAccountAddress,
                         to: paxAddress,
                         gasPrice: web3GasPrice,
@@ -1008,11 +1008,11 @@ $('#btnNext').click(async function(){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(paxAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(paxAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                 }
 
                 //var data = ethContractInstance.methods.tokenIn(paxAddress,tokenAmount,chainID).encodeABI();
@@ -1030,10 +1030,10 @@ $('#btnNext').click(async function(){
                 usdtContractInstance =  new myweb3.eth.Contract(bnbDthABI, bnbDthAddress, {
                     from: myAccountAddress, // default from address
                 });
-                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
                
                 if(allowance<tAmount){
-                    var result = usdtContractInstance.methods.approve(SardisContract,approveAmount).send({
+                    var result = usdtContractInstance.methods.approve(dithereumContract,approveAmount).send({
                         from: myAccountAddress,
                         to: bnbDthAddress,
                         gasPrice: web3GasPrice,
@@ -1042,11 +1042,11 @@ $('#btnNext').click(async function(){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(bnbDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(bnbDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                 }
 
                 //var data = bscContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
@@ -1063,10 +1063,10 @@ $('#btnNext').click(async function(){
                 usdtContractInstance =  new myweb3.eth.Contract(usdtBscABI, usdtBscAddress, {
                     from: myAccountAddress, // default from address
                 });
-                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
                
                 if(allowance<tAmount){
-                    var result = usdtContractInstance.methods.approve(SardisContract,approveAmount).send({
+                    var result = usdtContractInstance.methods.approve(dithereumContract,approveAmount).send({
                         from: myAccountAddress,
                         to: usdtBscAddress,
                         gasPrice: web3GasPrice,
@@ -1075,11 +1075,11 @@ $('#btnNext').click(async function(){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                 }
 
                 //var data = bscContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
@@ -1097,10 +1097,10 @@ $('#btnNext').click(async function(){
                 usdtContractInstance =  new myweb3.eth.Contract(dusddDthABI, dusdDthAddress, {
                     from: myAccountAddress, // default from address
                 });
-                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
                
                 if(allowance<tAmount){
-                    var result = usdtContractInstance.methods.approve(SardisContract,approveAmount).send({
+                    var result = usdtContractInstance.methods.approve(dithereumContract,approveAmount).send({
                         from: myAccountAddress,
                         to: dusdDthAddress,
                         gasPrice: web3GasPrice,
@@ -1109,11 +1109,11 @@ $('#btnNext').click(async function(){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                 }
 
                 //var data = bscContractInstance.methods.tokenIn(busdBscAddress,tokenAmount,chainID).encodeABI();
@@ -1133,10 +1133,10 @@ $('#btnNext').click(async function(){
                     usdtContractInstance =  new myweb3.eth.Contract(maticdDthABI, maticDthAddress, {
                         from: myAccountAddress, // default from address
                     });
-                    const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+                    const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
                    
                     if(allowance<tAmount){
-                        var result = usdtContractInstance.methods.approve(SardisContract,approveAmount).send({
+                        var result = usdtContractInstance.methods.approve(dithereumContract,approveAmount).send({
                             from: myAccountAddress,
                             to: maticDthAddress,
                             gasPrice: web3GasPrice,
@@ -1145,11 +1145,11 @@ $('#btnNext').click(async function(){
                         });
         
                         var data = ethContractInstance.methods.tokenIn(maticDthAddress,tokenAmount,chainID).encodeABI();
-                        processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                        processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                        
                     }else{
                         var data = ethContractInstance.methods.tokenIn(maticDthAddress,tokenAmount,chainID).encodeABI();
-                        processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                        processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                     }
 
                     //var data = polygonContractInstance.methods.tokenIn(polygonContract,tokenAmount,chainID).encodeABI();
@@ -1169,10 +1169,10 @@ $('#btnNext').click(async function(){
                    usdtContractInstance =  new myweb3.eth.Contract(htDthABI, htDthAddress, {
                     from: myAccountAddress, // default from address
                 });
-                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,SardisContract).call();
+                const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
                
                 if(allowance<tAmount){
-                    var result = usdtContractInstance.methods.approve(SardisContract,approveAmount).send({
+                    var result = usdtContractInstance.methods.approve(dithereumContract,approveAmount).send({
                         from: myAccountAddress,
                         to: htDthAddress,
                         gasPrice: web3GasPrice,
@@ -1181,11 +1181,11 @@ $('#btnNext').click(async function(){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(htDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(htDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,SardisContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
                 }
 
                  //  var data = hecoContractInstance.methods.tokenIn(hecoContract,tokenAmount,chainID).encodeABI();
