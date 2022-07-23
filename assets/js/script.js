@@ -117,7 +117,7 @@ $("#connectWallet,#connectWallet1").click(async function(e){
 //token select 
 $('#assetFrom li').click(function(){
     var name = $(this).data('name');
-    
+    console.log(">>>@@@@>>> name >>>",name);
     if(name=="srdx"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardis Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
