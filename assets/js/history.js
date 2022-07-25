@@ -74,7 +74,7 @@ $('document').ready(async function(){
     setTimeout(getHistory, 500);
 });
 async function getHistory(){
-    const fetchResponse =  await fetch('https://api.dithereum.io/history?user='+myAccountAddress);
+    const fetchResponse =  await fetch('https://bridge-api.sardisnetwork.com/history?user='+myAccountAddress);
     const edata = await fetchResponse.json();  
     console.log(edata); 
     if(edata.result == 'success'){
