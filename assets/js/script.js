@@ -614,12 +614,12 @@ const fetchResponse =  await fetch(customURL,requestOptions);
     
 const edata = await fetchResponse.json(); 
 if(edata.success==false){
-    alertify.alert("Warning","Your wallet is not KYC verified.Please get KYC verification at kyc.sardisnetwork.com");
+    alertify.alert("Warning","Your wallet is not KYC verified.Please get KYC verification at <a href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
     return false;
 }
  if(edata.success==true){
      if(edata.kyc_status == false){
-        alertify.alert("Warning","Your wallet is not KYC verified.Please get KYC verification at kyc.sardisnetwork.com");
+        alertify.alert("Warning","Your wallet is not KYC verified.Please get KYC verification at <a href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
         return false;
      }
  }
