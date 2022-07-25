@@ -657,8 +657,8 @@ if(edata.success==false){
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDC (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
         }
         if(asset_Name=='dai'){
-            if(tokenAmount<0.01){
-                alertify.alert("Warning","Minimum Amount is 0.01");
+            if(tokenAmount<10){
+                alertify.alert("Warning","Minimum Amount is 10");
                 return false;
             }
             confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' DAI (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
