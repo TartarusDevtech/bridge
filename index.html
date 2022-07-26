@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
-	<link rel="icon" type="image/png" href="assets/img/Sardis NetworkIconFavicon.png"/>
+	<link rel="icon" type="image/png" href="assets/img/favicon.png"/>
 	<link rel="stylesheet" href="assets/css/alertify.min.css">
 </head>
 <body>
@@ -70,7 +70,7 @@
 							<label for="inputEmail4">Assets From</label>
 							<div class="dropdown dropdown-custom">
 								<button class="btn btn-secondary dropdown-toggle" type="button" id="assetFromUL" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)
+									<img class="icons" src="assets/img/eth-icon.svg"> tSRDX (Sardis-x Network)
 								</button>
 								
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -85,13 +85,45 @@
 									  </div>
 
 									<ul class="list-group" id="assetFrom">
-										<li id="assetFromDith" class="list-group-item d-flex justify-content-between align-items-center" data-name="eth">
+										<li id="assetFromtSRDX" class="list-group-item d-flex justify-content-between align-items-center" data-name="tsrdx">
+											<img src="assets/img/eth-icon.svg" class="mr-3" alt="ETH">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">tSRDX</h5>
+											  <span>Sardis-x Network</span>
+											</div>
+										  <span id="tsrdxTokencheck"  class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li id="assetFromtSRDS" class="list-group-item d-flex justify-content-between align-items-center" data-name="tsrds">
+											<img src="assets/img/eth-icon.svg" class="mr-3" alt="ETH">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">tSRDS</h5>
+											  <span>Sardis Network</span>
+											</div>
+										  <span id="tsrdsTokencheck"  style="display: none;" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li id="assetFromSRDS" class="list-group-item d-flex justify-content-between align-items-center" data-name="srds">
+											<img src="assets/img/eth-icon.svg" class="mr-3" alt="ETH">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">SRDS</h5>
+											  <span>Sardis Network</span>
+											</div>
+										  <span id="srdsTokencheck"  style="display: none;" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<li id="assetFromSRDX" class="list-group-item d-flex justify-content-between align-items-center" data-name="srdx">
+											<img src="assets/img/eth-icon.svg" class="mr-3" alt="ETH">
+											<div class="media-body">
+											  <h5 class="mt-0 mb-1">SRDX</h5>
+											  <span>Sardis-x Network</span>
+											</div>
+										  <span id="srdxTokencheck"  style="display: none;" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										</li>
+										<!-- <li id="assetFromDith" class="list-group-item d-flex justify-content-between align-items-center" data-name="eth">
 											<img src="assets/img/eth-icon.svg" class="mr-3" alt="ETH">
 											<div class="media-body">
 											  <h5 class="mt-0 mb-1">ETH</h5>
 											  <span>Ethereum</span>
 											</div>
-										  <span id="ethTokencheck"  class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
+										  <span id="ethTokencheck"  style="display: none;" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
 										</li>
 										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="srdx">
 											<img src="assets/img/eth-icon.svg" class="mr-3" alt="SRDX">
@@ -148,15 +180,15 @@
 											  <span>Sardis Network</span>
 											</div>
 											<span style="display: none;" id="dhecoTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
-										</li>
-										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="trx" style="display:none !important;">
+										</li> -->
+										<!-- <li class="list-group-item d-flex justify-content-between align-items-center" data-name="trx" style="display:none !important;">
 											<img src="assets/img/tron-logo.png" class="mr-3 img-small" alt="TRX">
 											<div class="media-body">
 											  <h5 class="mt-0 mb-1">TRX</h5>
 											  <span>TRON</span>
 											</div>
 											<span style="display: none;" id="trxTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
-										</li>
+										</li> -->
 										<!-- <li class="list-group-item d-flex justify-content-between align-items-center" data-name="dtrx">
 											<img src="assets/img/tron-logo.png" class="mr-3 img-small" alt="DTRX">
 											<div class="media-body">
@@ -165,7 +197,7 @@
 											</div>
 											<span style="display: none;" id="dhecoTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
 										</li> -->
-										<li class="list-group-item d-flex justify-content-between align-items-center" data-name="dusd">
+										<!-- <li class="list-group-item d-flex justify-content-between align-items-center" data-name="dusd">
 											<img src="assets/img/tether-usdt-logo.png" class="mr-3 img-small" alt="DUSD">
 											<div class="media-body">
 											  <h5 class="mt-0 mb-1">DUSD</h5>
@@ -220,7 +252,7 @@
 											  <span>Ethereum</span>
 											</div>
 											<span style="display: none;" id="paxTokencheck" class="badge badge-success badge-pill tokenCheck"><i class="fa fa-check" aria-hidden="true"></i></span>
-										</li>
+										</li> -->
 									  </ul>
 								</div>
 							</div>
@@ -230,8 +262,8 @@
 							<label for="inputEmail4">Assets To</label>
 							<div class="dropdown dropdown-custom">
 								<button class="btn btn-secondary dropdown-toggle disabled" type="button" id="assetToUl" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardis Network Network)
-								</button>					
+									<img class="icons" src="assets/img/eth-icon.svg"> tSRDS (Sardis Network)
+								</button>					 
 							</div>
 						</div>
 
