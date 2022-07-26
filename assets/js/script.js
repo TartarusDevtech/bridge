@@ -152,7 +152,7 @@ $('#assetFrom li').click(function(){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDX (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDS (Sardis Network)');
         $('.tokenCheck').hide();
-        $('#dithTokencheck').show();
+        $('#srdsTokencheck').show();
         asset_Name = 'srdx';
         asset_To = 'srds';
         network_From = 'srdx';
@@ -167,7 +167,7 @@ $('#assetFrom li').click(function(){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDS (Sardis Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDX (Sardis-x Network)');
         $('.tokenCheck').hide();
-        $('#dithTokencheck').show();
+        $('#srdxTokencheck').show();
         asset_Name = 'srds';
         asset_To = 'srdx';
         network_From = 'srds';
