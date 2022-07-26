@@ -71,7 +71,7 @@ async function checkAccount() {
 }
 setTimeout(checkAccount, 500);
 $('document').ready(function(){
-    addNetowrk('ETH');
+    addNetowrk('tSRDX');
 });
 //get short user address
 function getUserAddress(userAddress){
@@ -118,19 +118,64 @@ $("#connectWallet,#connectWallet1").click(async function(e){
 $('#assetFrom li').click(function(){
     var name = $(this).data('name');
     console.log(">>>@@@@>>> name >>>",name);
+    if(name=="tsrdx"){
+        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> tSRDX (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> tSRDS (Sardis Network)');
+        $('.tokenCheck').hide();
+        $('#tsrdxTokencheck').show();
+        asset_Name = 'tsrdx';
+        asset_To = 'tsrds';
+        network_From = 'tsrdx';
+        network_To = 'tsrds';
+        addNetowrk('tSRDX');
+        $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
+        $('#reciveName').html('tSRDS');
+        $('#feeText').html('(Fee 10$ of tSRDS)');
+        $('#feeText').show();
+    }
+    if(name=="tsrds"){
+        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> tSRDS (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> tSRDX (Sardis-x Network)');
+        $('.tokenCheck').hide();
+        $('#tsrdsTokencheck').show();
+        asset_Name = 'tsrds';
+        asset_To = 'tsrdx';
+        network_From = 'tsrds';
+        network_To = 'tsrdx';
+        addNetowrk('tSRDS');
+        $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
+        $('#reciveName').html('tSRDX');
+        $('#feeText').html('(Fee 10$ of tSRDS)');
+        $('#feeText').show();
+    }
     if(name=="srdx"){
-        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardis Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDX (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDS (Sardis Network)');
         $('.tokenCheck').hide();
         $('#dithTokencheck').show();
         asset_Name = 'srdx';
-        asset_To = 'eth';
+        asset_To = 'srds';
         network_From = 'srdx';
-        network_To = 'eth';
+        network_To = 'srds';
         addNetowrk('SRDX');
         $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
-        $('#reciveName').html('ETH');
-        $('#feeText').html('(Fee 10$ of ETH)');
+        $('#reciveName').html('SRDS');
+        $('#feeText').html('(Fee 10$ of SRDS)');
+        $('#feeText').show();
+    }
+    if(name=="srds"){
+        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDS (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDX (Sardis-x Network)');
+        $('.tokenCheck').hide();
+        $('#dithTokencheck').show();
+        asset_Name = 'srds';
+        asset_To = 'srdx';
+        network_From = 'srds';
+        network_To = 'srdx';
+        addNetowrk('SRDS');
+        $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
+        $('#reciveName').html('SRDX');
+        $('#feeText').html('(Fee 10$ of SRDS)');
         $('#feeText').show();
     }
     if(name=="eth"){
@@ -362,6 +407,61 @@ $('#assetFrom li').click(function(){
 });
 //add networks SARDIS
 async function addNetowrk(network){
+    //Sardis-x Network
+    console.log(network);
+    if(network=='tSRDX'){
+        if(window.ethereum) {
+            try {
+                await ethereum.request({
+                    method: 'wallet_switchEthereumChain',                    
+                    params: [{ chainId: '0x2d5c' }], // , testnet = 0x2d5c
+                });
+		        chainID = 11612; 
+            } catch (switchError) {
+                // This error code indicates that the chain has not been added to MetaMask.
+                if (switchError.code === 4902) {
+                try {
+                    await ethereum.request({
+                        method: 'wallet_addEthereumChain',                    
+                        params: [{ chainId: '0x2d5c', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }],     blockExplorerUrls: ['https://contract-testnet.sardisnetwork.com/'] // mainnet 
+                    });
+                    chainID = 11612; 
+                } catch (addError) {
+                    // handle "add" error
+                }
+                }
+                // handle other "switch" errors
+            }
+        }
+
+    }
+    //Sardis testnet
+    if(network=='tSRDS'){
+        if(window.ethereum) {
+            try {
+                await ethereum.request({
+                    method: 'wallet_switchEthereumChain',                    
+                    params: [{ chainId: '0x8d6' }], // , testnet = 0x2d5c
+                });
+		        chainID = 2262; 
+            } catch (switchError) {
+                // This error code indicates that the chain has not been added to MetaMask.
+                if (switchError.code === 4902) {
+                try {
+                    await ethereum.request({
+                        method: 'wallet_addEthereumChain',                    
+                        params: [{ chainId: '0x8d6', rpcUrl: 'https://testnet-rpc.sardischain.com' /* ... */ }],     blockExplorerUrls: ['https://testnet-explorer.sardischain.com/'] // mainnet 
+                    });
+                    chainID = 2262; 
+                } catch (addError) {
+                    // handle "add" error
+                }
+                }
+                // handle other "switch" errors
+            }
+        }
+
+    }
     //Sardis Network
     if(network=='SRDX'){
         if(window.ethereum) {
@@ -380,6 +480,33 @@ async function addNetowrk(network){
                         params: [{ chainId: '0x2d5c', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }], // mainnet 
                     });
                     chainID = 11612; 
+                } catch (addError) {
+                    // handle "add" error
+                }
+                }
+                // handle other "switch" errors
+            }
+        }
+
+    }
+     //Sardis Network
+     if(network=='SRDS'){
+        if(window.ethereum) {
+            try {
+                await ethereum.request({
+                    method: 'wallet_switchEthereumChain',                    
+                    params: [{ chainId: '0x7d6' }], // , testnet = 0x2d5c
+                });
+		        chainID = 2006; 
+            } catch (switchError) {
+                // This error code indicates that the chain has not been added to MetaMask.
+                if (switchError.code === 4902) {
+                try {
+                    await ethereum.request({
+                        method: 'wallet_addEthereumChain',                    
+                        params: [{ chainId: '0x7d6', rpcUrl: 'https://mainnet-rpc.sardischain.com/' /* ... */ }],     blockExplorerUrls: ['https://sardischain.com/'] // mainnet 
+                    });
+                    chainID = 2006; 
                 } catch (addError) {
                     // handle "add" error
                 }
@@ -675,8 +802,36 @@ if(edata.success==false){
 
 
 
+    if(network_From=='tsrdx'){
+        if(asset_Name=='tsrdx'){
+            if(tokenAmount<0.0025){
+                alertify.alert("Warning","Minimum Amount is 0.0025");
+                return false;
+            }
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' tSRDX (Sardis-x Network) to ' +  tokenAmount +' tSRDS (Sardis Network)';
+        }
 
-
+    }
+    if(network_From=='tsrds'){
+        if(asset_Name=='tsrds'){
+            if(tokenAmount<0.0025){
+                alertify.alert("Warning","Minimum Amount is 0.0025");
+                return false;
+            }
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' tSRDS (Sardis Network) to ' +  tokenAmount +' tSRDX (Sardis-x Network)';
+        }
+        
+    }
+    if(network_From=='srds'){
+        if(asset_Name=='srds'){
+            if(tokenAmount<0.0025){
+                alertify.alert("Warning","Minimum Amount is 0.0025");
+                return false;
+            }
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' SRDS (Sardis Network) to ' +  tokenAmount +' SRDS (Sardis-x Network)';
+        }
+        
+    }
 
 
 
