@@ -428,8 +428,10 @@ async function addNetowrk(network){
                     chainID = 11612; 
                 } catch (addError) {
                     // handle "add" error
+			console.log("error ...",addError);
                 }
                 }
+		console.log("switchError ...",switchError);    
                 // handle other "switch" errors
             }
         }
@@ -455,9 +457,11 @@ async function addNetowrk(network){
                     chainID = 2262; 
                 } catch (addError) {
                     // handle "add" error
+		    console.log("switchError ...",addError);  	
                 }
                 }
                 // handle other "switch" errors
+		console.log("switchError ...",switchError);      
             }
         }
 
