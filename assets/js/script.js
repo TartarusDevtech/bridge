@@ -439,6 +439,7 @@ async function addNetowrk(network){
     }
     //Sardis testnet
     if(network=='tSRDS'){
+	console.log(">>>> NETWORK <<<<",network);    
         if(window.ethereum) {
             try {
                 await ethereum.request({
