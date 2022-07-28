@@ -657,7 +657,7 @@ $('#tokenAmount').on('keyup keydown change', function(e){
 
 //function for tx alert etc
 function processTx(data,contractAddress,web3GasPrice,gasLimit,value,TX_URL){
-	console.log("> processTx - contractAddress >",contractAddress);
+	console.log("> processTx - contractAddress  >",contractAddress);
         myweb3.eth.sendTransaction({
             from: myAccountAddress,
             to: contractAddress,
@@ -1069,8 +1069,7 @@ if(edata.success==false){
     //srdx network
     if(network_From=='srdx'){
 	console.log("Selected- network_From, asset_To",network_From, asset_To);
-        //ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {
-	ethContractInstance = new myweb3.eth.Contract(tsrdxABI, tsrdxContract, {
+        ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {	
             from: myAccountAddress, // default from address
         });
        
