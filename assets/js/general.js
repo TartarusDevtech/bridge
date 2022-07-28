@@ -73,5 +73,5 @@ const TSRDXSCAN_URL = 'https://contract-testnet.sardisnetwork.com/tx/';
 const TSRDSSCAN_URL = 'https://testnet-explorer.sardischain.com/tx/';
 const TRONSCAN_URL = 'https://shasta.tronscan.io/#/transaction/';
 
-const myToken = '9SBUCVDXFYGZJ3K4M6P7Q8RATBUCWEXFYH2J3K5N6P7R9SATCVDWEYGZH2';
-const customURL = 'https://kyc.sardisnetwork.com/index.php?route=api/custom';
+//const myToken = '9SBUCVDXFYGZJ3K4M6P7Q8RATBUCWEXFYH2J3K5N6P7R9SATCVDWEYGZH2';
+//const customURL = 'https://kyc.sardisnetwork.com/index.php?route=api/custom';
