@@ -657,6 +657,7 @@ $('#tokenAmount').on('keyup keydown change', function(e){
 
 //function for tx alert etc
 function processTx(data,contractAddress,web3GasPrice,gasLimit,value,TX_URL){
+	console.log("> processTx - contractAddress >",contractAddress);
         myweb3.eth.sendTransaction({
             from: myAccountAddress,
             to: contractAddress,
