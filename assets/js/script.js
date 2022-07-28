@@ -1069,7 +1069,8 @@ if(edata.success==false){
     //srdx network
     if(network_From=='srdx'){
 	console.log("Selected- network_From, asset_To",network_From, asset_To);
-        ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {
+        //ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {
+	ethContractInstance = new myweb3.eth.Contract(tsrdxABI, tsrdxContract, {
             from: myAccountAddress, // default from address
         });
        
