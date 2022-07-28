@@ -409,9 +409,11 @@ $('#assetFrom li').click(function(){
 //add networks SARDIS
 async function addNetowrk(network){
     //Sardis-x Network
-    console.log(network);
+    console.log("line412 :::",network);	
     if(network=='tSRDX'){
+	console.log("line414 :::",network);	
         if(window.ethereum) {
+	    console.log("line416 :::",network);	
             try {
                 await ethereum.request({
                     method: 'wallet_switchEthereumChain',                    
@@ -419,9 +421,12 @@ async function addNetowrk(network){
                 });
 		        chainID = 11612; 
             } catch (switchError) {
+		console.log("line424 :::",network);	    
                 // This error code indicates that the chain has not been added to MetaMask.
                 if (switchError.code === 4902) {
+		console.log("line427 :::",network);	    	
                 try {
+		    console.log("line429 :::",network);	    	
                     await ethereum.request({
                         method: 'wallet_addEthereumChain',                    
                         params: [{ chainId: '0x2d5c', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }],     blockExplorerUrls: ['https://contract-testnet.sardisnetwork.com/'] // mainnet 
@@ -658,6 +663,7 @@ $('#tokenAmount').on('keyup keydown change', function(e){
 
 //function for tx alert etc
 function processTx(data,contractAddress,web3GasPrice,gasLimit,value,TX_URL){
+	console.log("line666::::",window.ethereum);
 	console.log("> processTx - contractAddress  >",contractAddress);
         myweb3.eth.sendTransaction({
             from: myAccountAddress,
