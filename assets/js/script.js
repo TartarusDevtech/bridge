@@ -10,6 +10,7 @@ var global = {
 	loggedIn : false
 }
 if(window.ethereum){
+    console.log(">>>>Window.ethereum >>>>",window.ethereum);
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       if (isMobile && window.ethereum.isMetaMask==true){
             var myweb3 = new Web3("https://rinkeby.infura.io/v3/81072921998748a4b1199468ab287baf");
