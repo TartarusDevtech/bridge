@@ -181,7 +181,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="eth"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardis-x Network)');
         $('.tokenCheck').hide();
         $('#ethTokencheck').show();
         asset_Name = 'eth';
@@ -195,7 +195,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="bnb"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Binance Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Sardis-x Network)');
         asset_Name = 'bnb';
         asset_To = 'srdx';
         network_From = 'bsc';
@@ -208,7 +208,7 @@ $('#assetFrom li').click(function(){
         addNetowrk('BNB');
     }
     if(name=="dbnb"){
-        $('#assetFromUL').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Sardis Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Binance Network)');
         asset_Name = 'dbnb';
         asset_To = 'bnb';
@@ -224,7 +224,7 @@ $('#assetFrom li').click(function(){
     if(name=="trx"){        
         $('#assetFromUL').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (TRON Network)');
         $('#assetTo li').addClass("disabled2");
-        $('#assetToUl').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (Sardis-x Network)');
         asset_Name = 'trx';
         asset_To = 'srdx';
         network_From = 'trx';
@@ -237,7 +237,7 @@ $('#assetFrom li').click(function(){
         addNetowrk('TRX');
     }
     if(name=="dtrx"){
-        $('#assetFromUL').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (Sardis Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (Sardis-x Network)');
         $('#assetTo li').addClass("disabled2");
         $('#assetToUl').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (TRON Network)');
         asset_Name = 'dtrx';
@@ -257,7 +257,7 @@ $('#assetFrom li').click(function(){
         network_From = 'polygon';
         network_To = 'srdx';
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Polygon Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Sardis-x Network)');
         $('.tokenCheck').hide();
         $('#maticTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
@@ -270,7 +270,7 @@ $('#assetFrom li').click(function(){
         asset_To = 'matic';
         network_From = 'srdx';
         network_To = 'polygon';
-        $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Sardis Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Polygon Network)');
         $('.tokenCheck').hide();
         $('#dmaticTokencheck').show();
@@ -285,7 +285,7 @@ $('#assetFrom li').click(function(){
         network_From = 'heco';
         network_To = 'srdx';
         $('#assetFromUL').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Heco Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Sardis-x Network)');
         $('.tokenCheck').hide();
         $('#hecoTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/heco-logo.png');
@@ -298,7 +298,7 @@ $('#assetFrom li').click(function(){
         asset_To = 'ht';
         network_From = 'srdx';
         network_To = 'heco'
-        $('#assetFromUL').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Sardis Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Heco Network)');
         $('.tokenCheck').hide();
         $('#dhecoTokencheck').show();
@@ -308,7 +308,7 @@ $('#assetFrom li').click(function(){
         addNetowrk('SRDX');;
     }
     if(name=="dusd"){
-        $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Binance Network)');
         asset_Name = 'dusd';
         asset_To = 'busd';
@@ -323,7 +323,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="usdt"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
         asset_Name = 'usdt';
         asset_To = 'dusd';
         network_From = 'eth';
@@ -337,7 +337,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="usdtbsc"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Binance Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
         asset_Name = 'usdtbsc';
         network_From = 'bsc';
         network_To = 'srdx';
@@ -351,7 +351,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="usdc"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/usdc-logo.png"> USDC (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
         asset_Name = 'usdc';
         asset_To = 'dusd';
         network_From = 'eth';
@@ -365,7 +365,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="busd"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/busd-logo.png"> BUSD (Binance Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
         asset_Name = 'busd';
         network_From = 'bsc';
         asset_To = 'dusd';
@@ -379,7 +379,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="dai"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/dai-logo.png"> DAI (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
         $('.tokenCheck').hide();
         asset_Name = 'dai';
         network_From = 'eth';
@@ -393,7 +393,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="pax"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/pax-logo.png"> PAX (Ethereum Netowoek)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
         asset_Name = 'pax';
         asset_To = 'dusd';
         network_From = 'eth';
