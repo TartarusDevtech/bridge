@@ -841,7 +841,7 @@ if(edata.success==false){
                 alertify.alert("Warning","Minimum Amount is 0.0025");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' SRDS (Sardis Network) to ' +  tokenAmount +' SRDS (Sardis-x Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' SRDS (Sardis Network) to ' +  tokenAmount +' SRDX (Sardis-x Network)';
         }
         
     }
@@ -854,7 +854,7 @@ if(edata.success==false){
                 alertify.alert("Warning","Minimum Amount is 0.0025");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' ETH (Sardis Network) to ' +  tokenAmount +' ETH (Ethereum Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' SRDX (Sardis-x Network) to ' +  tokenAmount +' SRDS (Sardis Network)';
         }
 
         if(asset_Name=='dbnb'){
