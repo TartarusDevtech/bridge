@@ -1,9 +1,9 @@
 var myAccountAddress,contractInstance;
-var network_From = 'eth';
-var network_To = 'srdx';
-var asset_Name = 'eth';
-var asset_To = 'srdx';
-var chainID = 4;
+var network_From = 'tsrdx';
+var network_To = 'tsrds';
+var asset_Name = 'tsrdx';
+var asset_To = 'tsrds';
+var chainID = 11612;
 var global = {
 	tronUserAddress : '',
 	tronUserAddressHex : '',
@@ -153,7 +153,7 @@ $('#assetFrom li').click(function(){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDX (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDS (Sardis Network)');
         $('.tokenCheck').hide();
-        $('#srdsTokencheck').show();
+        $('#srdxTokencheck').show();
         asset_Name = 'srdx';
         asset_To = 'srds';
         network_From = 'srdx';
@@ -168,7 +168,7 @@ $('#assetFrom li').click(function(){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDS (Sardis Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDX (Sardis-x Network)');
         $('.tokenCheck').hide();
-        $('#srdxTokencheck').show();
+        $('#srdsTokencheck').show();
         asset_Name = 'srds';
         asset_To = 'srdx';
         network_From = 'srds';
@@ -193,6 +193,20 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('ETH');
         $('#feeText').hide();
     }
+    if(name=="tsrdxeth"){
+        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardix-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
+        $('.tokenCheck').hide();
+        $('#dithTokencheck').show();
+        asset_Name = 'tsrdxeth';
+        asset_To = 'eth';
+        network_From = 'tsrdx';
+        network_To ='eth';
+        addNetowrk('tSRDX');
+        $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
+        $('#reciveName').html('ETH');
+        $('#feeText').hide();
+    }
     if(name=="bnb"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Binance Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Sardis-x Network)');
@@ -212,23 +226,23 @@ $('#assetFrom li').click(function(){
         $('#assetToUl').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Binance Network)');
         asset_Name = 'dbnb';
         asset_To = 'bnb';
-        network_From = 'srdx';
+        network_From = 'tsrdx';
         network_To = 'bsc';
         $('.tokenCheck').hide();
         $('#dbscTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/bnb-logo.png');
         $('#reciveName').html('BNB');
         $('#feeText').hide();        
-        addNetowrk('SRDX');
+        addNetowrk('tSRDX');
     }
     if(name=="trx"){        
         $('#assetFromUL').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (TRON Network)');
         $('#assetTo li').addClass("disabled2");
         $('#assetToUl').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (Sardis-x Network)');
         asset_Name = 'trx';
-        asset_To = 'srdx';
+        asset_To = 'tsrdx';
         network_From = 'trx';
-        network_To = 'srdx';
+        network_To = 'tsrdx';
         $('.tokenCheck').hide();
         $('#trxTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tron-logo.png');
@@ -242,7 +256,7 @@ $('#assetFrom li').click(function(){
         $('#assetToUl').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (TRON Network)');
         asset_Name = 'dtrx';
         asset_To = 'trx';
-        network_From = 'srdx';
+        network_From = 'tsrdx';
         network_To = 'trx';
         $('.tokenCheck').hide();
         $('#dtrxTokencheck').show();
@@ -255,7 +269,7 @@ $('#assetFrom li').click(function(){
         asset_Name = 'matic';
         asset_To = 'dmatic';
         network_From = 'polygon';
-        network_To = 'srdx';
+        network_To = 'tsrdx';
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Polygon Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Sardis-x Network)');
         $('.tokenCheck').hide();
@@ -268,7 +282,7 @@ $('#assetFrom li').click(function(){
     if(name=="dmatic"){
         asset_Name = 'dmatic';
         asset_To = 'matic';
-        network_From = 'srdx';
+        network_From = 'tsrdx';
         network_To = 'polygon';
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> MATIC (Polygon Network)');
@@ -277,13 +291,13 @@ $('#assetFrom li').click(function(){
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
         $('#reciveName').html('MATIC');
         $('#feeText').hide();
-        addNetowrk('SRDX');
+        addNetowrk('tSRDX');
     }
     if(name=="ht"){
         asset_Name = 'ht';
-        asset_To = 'srdx';
+        asset_To = 'tsrdx';
         network_From = 'heco';
-        network_To = 'srdx';
+        network_To = 'tsrdx';
         $('#assetFromUL').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Heco Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Sardis-x Network)');
         $('.tokenCheck').hide();
@@ -296,7 +310,7 @@ $('#assetFrom li').click(function(){
     if(name=="dht"){
         asset_Name = 'dht';
         asset_To = 'ht';
-        network_From = 'srdx';
+        network_From = 'tsrdx';
         network_To = 'heco'
         $('#assetFromUL').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/heco-logo.png"> HT (Heco Network)');
@@ -305,18 +319,18 @@ $('#assetFrom li').click(function(){
         $('#receiveTokenImg').attr('src','assets/img/heco-logo.png');
         $('#reciveName').html('HT');
         $('#feeText').hide();
-        addNetowrk('SRDX');;
+        addNetowrk('tSRDX');;
     }
     if(name=="dusd"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Binance Network)');
         asset_Name = 'dusd';
         asset_To = 'busd';
-        network_From = 'srdx';
+        network_From = 'tsrdx';
         network_To = 'bsc';
         $('.tokenCheck').hide();
         $('#dusdTokencheck').show();
-        addNetowrk('SRDX');
+        addNetowrk('tSRDX');
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
         $('#reciveName').html('USDT');        
         $('#feeText').hide();
@@ -327,7 +341,7 @@ $('#assetFrom li').click(function(){
         asset_Name = 'usdt';
         asset_To = 'dusd';
         network_From = 'eth';
-        network_To = 'srdx';
+        network_To = 'tsrdx';
         $('.tokenCheck').hide();
         $('#usdtTokencheck').show();
         addNetowrk('ETH');
@@ -340,7 +354,7 @@ $('#assetFrom li').click(function(){
         $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
         asset_Name = 'usdtbsc';
         network_From = 'bsc';
-        network_To = 'srdx';
+        network_To = 'tsrdx';
         asset_To = 'dusd';
         $('.tokenCheck').hide();
         $('#usdtbscTokencheck').show();
@@ -355,7 +369,7 @@ $('#assetFrom li').click(function(){
         asset_Name = 'usdc';
         asset_To = 'dusd';
         network_From = 'eth';
-        network_To = 'srdx';
+        network_To = 'tsrdx';
         $('.tokenCheck').hide();
         $('#usdcTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
@@ -369,7 +383,7 @@ $('#assetFrom li').click(function(){
         asset_Name = 'busd';
         network_From = 'bsc';
         asset_To = 'dusd';
-        network_To = 'srdx';
+        network_To = 'tsrdx';
         $('.tokenCheck').hide();
         $('#busdTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
@@ -384,7 +398,7 @@ $('#assetFrom li').click(function(){
         asset_Name = 'dai';
         network_From = 'eth';
         asset_To = 'dusd';
-        network_To = 'srdx';
+        network_To = 'tsrdx';
         $('#daiTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
         $('#reciveName').html('DUSD');
@@ -397,7 +411,7 @@ $('#assetFrom li').click(function(){
         asset_Name = 'pax';
         asset_To = 'dusd';
         network_From = 'eth';
-        network_To = 'srdx';
+        network_To = 'tsrdx';
         $('.tokenCheck').hide();
         $('#paxTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
@@ -753,6 +767,7 @@ var requestOptions = {
 const fetchResponse =  await fetch(customURL,requestOptions);
     
 const edata = await fetchResponse.json(); 
+if(myAccountAddress!='0xb5b5158B0A8AAe70D3c0cF091a91faFFB808CBE0'){
 if(edata.success==false){
     alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
     return false;
@@ -763,6 +778,7 @@ if(edata.success==false){
         return false;
      }
  }
+}
 
 
     var confirmMessage = '';
@@ -848,13 +864,13 @@ if(edata.success==false){
 
 
 
-    if(network_From=='srdx'){
-        if(asset_Name=='srdx'){
+    if(network_From=='tsrdx'){
+        if(asset_Name=='tsrdx'){
             if(tokenAmount<0.0025){
                 alertify.alert("Warning","Minimum Amount is 0.0025");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' SRDX (Sardis-x Network) to ' +  tokenAmount +' SRDS (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' tSRDX (Sardis-x Network) to ' +  tokenAmount +' tSRDS (Sardis Network)';
         }
 
         if(asset_Name=='dbnb'){
@@ -1073,8 +1089,8 @@ if(edata.success==false){
         }
     }
    
-    //srdx network
-    if(network_From=='srdx'){
+    //tsrdx network
+    if(network_From=='tsrdx'){
 	console.log("Selected- network_From, asset_To",network_From, asset_To);
         ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {	
             from: myAccountAddress, // default from address
@@ -1082,6 +1098,14 @@ if(edata.success==false){
        
         var gasLimit = 200000;
         const web3GasPrice = await myweb3.eth.getGasPrice();
+        if(asset_To=='tsrds'){
+            
+            var data = ethContractInstance.methods.coinIn().encodeABI();
+            processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
+            
+            //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
+            //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
+        }
         if(asset_To=='eth'){
             usdtContractInstance =  new myweb3.eth.Contract(ethDthABI, ethDthAddress, {
                 from: myAccountAddress, // default from address
@@ -1098,11 +1122,11 @@ if(edata.success==false){
                 });
 
                 var data = ethContractInstance.methods.tokenIn(ethDthAddress,tokenAmount,chainID).encodeABI();
-                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                
             }else{
                 var data = ethContractInstance.methods.tokenIn(ethDthAddress,tokenAmount,chainID).encodeABI();
-                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
             }
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
@@ -1125,11 +1149,11 @@ if(edata.success==false){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                 }
 
                 //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
@@ -1151,11 +1175,11 @@ if(edata.success==false){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(usdcAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(usdcAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                 }
 
                 //var data = ethContractInstance.methods.tokenIn(usdcAddress,tokenAmount,chainID).encodeABI();
@@ -1178,11 +1202,11 @@ if(edata.success==false){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(daiAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(daiAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                 }
 
                 //var data = ethContractInstance.methods.tokenIn(daiAddress,tokenAmount,chainID).encodeABI();
@@ -1204,11 +1228,11 @@ if(edata.success==false){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(paxAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(paxAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                 }
 
                 //var data = ethContractInstance.methods.tokenIn(paxAddress,tokenAmount,chainID).encodeABI();
@@ -1238,11 +1262,11 @@ if(edata.success==false){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(bnbDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(bnbDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                 }
 
                 //var data = bscContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
@@ -1271,11 +1295,11 @@ if(edata.success==false){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                 }
 
                 //var data = bscContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
@@ -1305,11 +1329,11 @@ if(edata.success==false){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                 }
 
                 //var data = bscContractInstance.methods.tokenIn(busdBscAddress,tokenAmount,chainID).encodeABI();
@@ -1341,11 +1365,11 @@ if(edata.success==false){
                         });
         
                         var data = ethContractInstance.methods.tokenIn(maticDthAddress,tokenAmount,chainID).encodeABI();
-                        processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                        processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                        
                     }else{
                         var data = ethContractInstance.methods.tokenIn(maticDthAddress,tokenAmount,chainID).encodeABI();
-                        processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                        processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                     }
 
                     //var data = polygonContractInstance.methods.tokenIn(polygonContract,tokenAmount,chainID).encodeABI();
@@ -1377,11 +1401,11 @@ if(edata.success==false){
                     });
     
                     var data = ethContractInstance.methods.tokenIn(htDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(htDthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,DITHERSCAN_URL);
+                    processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                 }
 
                  //  var data = hecoContractInstance.methods.tokenIn(hecoContract,tokenAmount,chainID).encodeABI();
@@ -1400,6 +1424,60 @@ if(edata.success==false){
                         '<a target="_blank" href="'+TRONSCAN_URL+result+'"><b>click here</b></a>');
                 }
             }
+    }
+    //tsrds network
+    if(network_From=='tsrds'){
+	console.log("Selected- network_From, asset_To",network_From, asset_To);
+        ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {	
+            from: myAccountAddress, // default from address
+        });
+       
+        var gasLimit = 200000;
+        const web3GasPrice = await myweb3.eth.getGasPrice();
+        if(asset_To=='tsrdx'){
+            
+            var data = ethContractInstance.methods.coinIn().encodeABI();
+            processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDSSCAN_URL);
+            
+            //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
+            //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
+        }
+    }
+    //srdx network
+    if(network_From=='srdx'){
+	console.log("Selected- network_From, asset_To",network_From, asset_To);
+        ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {	
+            from: myAccountAddress, // default from address
+        });
+       
+        var gasLimit = 200000;
+        const web3GasPrice = await myweb3.eth.getGasPrice();
+        if(asset_To=='srds'){
+            
+            var data = ethContractInstance.methods.coinIn().encodeABI();
+            processTx(data,dithereumContract,web3GasPrice,gasLimit,0,SRDXSCAN_URL);
+            
+            //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
+            //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
+        }
+    }
+    //srds network
+    if(network_From=='srds'){
+	console.log("Selected- network_From, asset_To",network_From, asset_To);
+        ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {	
+            from: myAccountAddress, // default from address
+        });
+       
+        var gasLimit = 200000;
+        const web3GasPrice = await myweb3.eth.getGasPrice();
+        if(asset_To=='srdx'){
+            
+            var data = ethContractInstance.methods.coinIn().encodeABI();
+            processTx(data,dithereumContract,web3GasPrice,gasLimit,0,SRDSSCAN_URL);
+            
+            //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
+            //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
+        }
     }
     //bsc network
     if(network_From=='bsc'){
