@@ -767,7 +767,7 @@ var requestOptions = {
 const fetchResponse =  await fetch(customURL,requestOptions);
     
 const edata = await fetchResponse.json(); 
-if(myAccountAddress!='0xb5b5158B0A8AAe70D3c0cF091a91faFFB808CBE0'){
+
 if(edata.success==false){
     alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
     return false;
@@ -778,7 +778,7 @@ if(edata.success==false){
         return false;
      }
  }
-}
+
 
 
     var confirmMessage = '';
