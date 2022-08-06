@@ -322,7 +322,7 @@ $('#assetFrom li').click(function(){
         addNetowrk('tSRDX');;
     }
     if(name=="dusd"){
-        $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
         $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Binance Network)');
         asset_Name = 'dusd';
         asset_To = 'busd';
@@ -337,7 +337,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="usdt"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
         asset_Name = 'usdt';
         asset_To = 'dusd';
         network_From = 'eth';
@@ -346,12 +346,12 @@ $('#assetFrom li').click(function(){
         $('#usdtTokencheck').show();
         addNetowrk('ETH');
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
-        $('#reciveName').html('DUSD');
+        $('#reciveName').html('USDX');
         $('#feeText').hide();
     }
     if(name=="usdtbsc"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Binance Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
         asset_Name = 'usdtbsc';
         network_From = 'bsc';
         network_To = 'tsrdx';
@@ -360,7 +360,7 @@ $('#assetFrom li').click(function(){
         $('#usdtbscTokencheck').show();
         addNetowrk('BNB');
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
-        $('#reciveName').html('DUSD');
+        $('#reciveName').html('USDX');
         $('#feeText').hide();
     }
     if(name=="usdc"){
