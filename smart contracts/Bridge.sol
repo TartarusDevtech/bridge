@@ -1,7 +1,7 @@
-pragma solidity 0.8.12; 
+pragma solidity 0.8.15; 
 
 
-//SPDX-License-Identifier: UNLICENSED
+//SPDX-License-Identifier: MIT
 
 
 
@@ -22,7 +22,7 @@ interface ERC20Essential
 //*******************************************************************//
 contract owned
 {
-    address internal owner;
+    address public owner;
     address internal newOwner;
     mapping(address => bool) public signer;
 
@@ -71,7 +71,7 @@ contract owned
 //---------------------        MAIN CODE STARTS HERE     ---------------------//
 //****************************************************************************//
     
-contract DthEthBridge is owned {
+contract Bridge is owned {
     
     uint256 public orderID;
     
