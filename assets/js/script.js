@@ -120,8 +120,8 @@ $('#assetFrom li').click(function(){
     var name = $(this).data('name');
     console.log(">>>@@@@>>> name >>>",name);
     if(name=="tsrdx"){
-        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> tSRDX (Sardis-x Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> tSRDS (Sardis Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> tSRDX (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/srdx.png"> tSRDS (Sardis Network)');
         $('.tokenCheck').hide();
         $('#tsrdxTokencheck').show();
         asset_Name = 'tsrdx';
@@ -129,14 +129,14 @@ $('#assetFrom li').click(function(){
         network_From = 'tsrdx';
         network_To = 'tsrds';
         addNetowrk('tSRDX');
-        $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
+        $('#receiveTokenImg').attr('src','assets/img/srdx.png');
         $('#reciveName').html('tSRDS');
         $('#feeText').html('(Fee 10$ of tSRDS)');
         $('#feeText').show();
     }
     if(name=="tsrds"){
-        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> tSRDS (Sardis Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> tSRDX (Sardis-x Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> tSRDS (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/srdx.png"> tSRDX (Sardis-x Network)');
         $('.tokenCheck').hide();
         $('#tsrdsTokencheck').show();
         asset_Name = 'tsrds';
@@ -144,14 +144,14 @@ $('#assetFrom li').click(function(){
         network_From = 'tsrds';
         network_To = 'tsrdx';
         addNetowrk('tSRDS');
-        $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
+        $('#receiveTokenImg').attr('src','assets/img/srdx.png');
         $('#reciveName').html('tSRDX');
         $('#feeText').html('(Fee 10$ of tSRDS)');
         $('#feeText').show();
     }
     if(name=="srdx"){
-        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDX (Sardis-x Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDS (Sardis Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> SRDX (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/srdx.png"> SRDS (Sardis Network)');
         $('.tokenCheck').hide();
         $('#srdxTokencheck').show();
         asset_Name = 'srdx';
@@ -159,14 +159,14 @@ $('#assetFrom li').click(function(){
         network_From = 'srdx';
         network_To = 'srds';
         addNetowrk('SRDX');
-        $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
+        $('#receiveTokenImg').attr('src','assets/img/srdx.png');
         $('#reciveName').html('SRDS');
         $('#feeText').html('(Fee 10$ of SRDS)');
         $('#feeText').show();
     }
     if(name=="srds"){
-        $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDS (Sardis Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> SRDX (Sardis-x Network)');
+        $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> SRDS (Sardis Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/srdx.png"> SRDX (Sardis-x Network)');
         $('.tokenCheck').hide();
         $('#srdsTokencheck').show();
         asset_Name = 'srds';
@@ -174,7 +174,7 @@ $('#assetFrom li').click(function(){
         network_From = 'srds';
         network_To = 'srdx';
         addNetowrk('SRDS');
-        $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
+        $('#receiveTokenImg').attr('src','assets/img/srdx.png');
         $('#reciveName').html('SRDX');
         $('#feeText').html('(Fee 10$ of SRDS)');
         $('#feeText').show();
@@ -326,11 +326,11 @@ $('#assetFrom li').click(function(){
         $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Binance Network)');
         asset_Name = 'dusd';
         asset_To = 'busd';
-        network_From = 'tsrdx';
+        network_From = 'srdx';
         network_To = 'bsc';
         $('.tokenCheck').hide();
         $('#dusdTokencheck').show();
-        addNetowrk('tSRDX');
+        addNetowrk('SRDX');
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
         $('#reciveName').html('USDT');        
         $('#feeText').hide();
@@ -493,18 +493,18 @@ async function addNetowrk(network){
             try {
                 await ethereum.request({
                     method: 'wallet_switchEthereumChain',                    
-                    params: [{ chainId: '0x2d5c' }], // , testnet = 0x2d5c
+                    params: [{ chainId: '0xca00' }],
                 });
-		        chainID = 11612; 
+		        chainID = 51712; 
             } catch (switchError) {
                 // This error code indicates that the chain has not been added to MetaMask.
                 if (switchError.code === 4902) {
                 try {
                     await ethereum.request({
                         method: 'wallet_addEthereumChain',                    
-                        params: [{ chainId: '0x2d5c', rpcUrl: 'https://testnet-rpc.sardisnetwork.com' /* ... */ }], // mainnet 
+                        params: [{ chainId: '0xca00', rpcUrl: 'https://mainnet-rpc.sardischain.com/' /* ... */ }],  blockExplorerUrls: ['https://contract-mainnet.sardisnetwork.com/']// mainnet 
                     });
-                    chainID = 11612; 
+                    chainID = 51712; 
                 } catch (addError) {
                     // handle "add" error
                 }
@@ -549,7 +549,7 @@ async function addNetowrk(network){
             try {
                 await ethereum.request({
                     method: 'wallet_switchEthereumChain',                
-                    params: [{ chainId: '0x4' }],
+                    params: [{ chainId: '0x1' }],
                 });
 	    	    chainID = 1;
             } catch (switchError) {
@@ -558,9 +558,9 @@ async function addNetowrk(network){
                 try {
                     await ethereum.request({
                         method: 'wallet_addEthereumChain',
-                        params: [{ chainId: '0x4', rpcUrl: 'https://rinkeby.infura.io/v3/81072921998748a4b1199468ab287baf' /* ... */ }],                   
+                        params: [{ chainId: '0x1', rpcUrl: 'https://mainnet.infura.io/v3/' /* ... */ }],   blockExplorerUrls: ['https://etherscan.io/']                  
                     });
-                    chainID = 4;
+                    chainID = 1;
                 } catch (addError) {
                     // handle "add" error
                 }
@@ -607,17 +607,17 @@ async function addNetowrk(network){
             window.ethereum.request({method: 'eth_requestAccounts'})
             window.ethereum.request({
                 method: 'wallet_addEthereumChain',
-                params: [{chainId: '0x61', //testnet '0x61',
+                params: [{chainId: '0x38', //testnet '0x61',
                     chainName: "BSC Testnet",
                     nativeCurrency: {
                     name: "Binance Chain",
                     symbol: "BNB",
                     decimals: 18
                     },
-                    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],     blockExplorerUrls: ['https://testnet.bscscan.com']                    
+                    rpcUrls: ['https://bsc-dataseed.binance.org'],     blockExplorerUrls: ['https://bscscan.com']                    
                 }]
             })
-            chainID = 97;
+            chainID = 56;
             checkAccount();
         }
     }
