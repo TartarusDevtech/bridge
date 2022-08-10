@@ -365,7 +365,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="usdc"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/usdc-logo.png"> USDC (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
         asset_Name = 'usdc';
         asset_To = 'dusd';
         network_From = 'eth';
@@ -373,13 +373,13 @@ $('#assetFrom li').click(function(){
         $('.tokenCheck').hide();
         $('#usdcTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
-        $('#reciveName').html('DUSD');
+        $('#reciveName').html('USDX');
         $('#feeText').hide();
         addNetowrk('ETH');
     }
     if(name=="busd"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/busd-logo.png"> BUSD (Binance Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
         asset_Name = 'busd';
         network_From = 'bsc';
         asset_To = 'dusd';
@@ -387,13 +387,13 @@ $('#assetFrom li').click(function(){
         $('.tokenCheck').hide();
         $('#busdTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
-        $('#reciveName').html('DUSD');
+        $('#reciveName').html('USDX');
         $('#feeText').hide();
         addNetowrk('BNB');
     }
     if(name=="dai"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/dai-logo.png"> DAI (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
         $('.tokenCheck').hide();
         asset_Name = 'dai';
         network_From = 'eth';
@@ -401,13 +401,13 @@ $('#assetFrom li').click(function(){
         network_To = 'tsrdx';
         $('#daiTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
-        $('#reciveName').html('DUSD');
+        $('#reciveName').html('USDX');
         $('#feeText').hide();
         addNetowrk('ETH');
     }
     if(name=="pax"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/pax-logo.png"> PAX (Ethereum Netowoek)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> DUSD (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
         asset_Name = 'pax';
         asset_To = 'dusd';
         network_From = 'eth';
@@ -415,7 +415,7 @@ $('#assetFrom li').click(function(){
         $('.tokenCheck').hide();
         $('#paxTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
-        $('#reciveName').html('DUSD');
+        $('#reciveName').html('USDX');
         $('#feeText').hide();
         addNetowrk('ETH');
     }
@@ -803,28 +803,28 @@ if(edata.success==false){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             } 
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDT (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDT (Ethereum Network) to ' +  tokenAmount +' USDX (Sardis Network)';
         }
         if(asset_Name=='usdc'){
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDC (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDC (Ethereum Network) to ' +  tokenAmount +' USDX (Sardis Network)';
         }
         if(asset_Name=='dai'){
             if(tokenAmount<10){
                 alertify.alert("Warning","Minimum Amount is 10");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' DAI (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' DAI (Ethereum Network) to ' +  tokenAmount +' USDX (Sardis Network)';
         }
         if(asset_Name=='pax'){
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' PAX (Ethereum Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' PAX (Ethereum Network) to ' +  tokenAmount +' USDX (Sardis Network)';
         }
 
     }
@@ -902,7 +902,7 @@ if(edata.success==false){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' DUSD (Sardis Network) to ' +  tokenAmount +' USDT (Binance Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDX (Sardis Network) to ' +  tokenAmount +' USDT (Binance Network)';
         }
 
         if(asset_Name=='dtrx'){
@@ -932,7 +932,7 @@ if(edata.success==false){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDT (Binance Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDT (Binance Network) to ' +  tokenAmount +' USDX (Sardis Network)';
         }
 
         if(asset_Name=='busd'){
@@ -940,7 +940,7 @@ if(edata.success==false){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' BUSD (Binance Network) to ' +  tokenAmount +' DUSD (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' BUSD (Binance Network) to ' +  tokenAmount +' USDX (Sardis Network)';
         }
     }
 
@@ -1314,7 +1314,7 @@ if(edata.success==false){
                
                 var gasLimit = 200000;
                 const web3GasPrice = await myweb3.eth.getGasPrice();
-                usdtContractInstance =  new myweb3.eth.Contract(dusddDthABI, dusdDthAddress, {
+                usdtContractInstance =  new myweb3.eth.Contract(dusdDthABI, dusdDthAddress, {
                     from: myAccountAddress, // default from address
                 });
                 const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
@@ -1457,6 +1457,33 @@ if(edata.success==false){
             var data = ethContractInstance.methods.coinIn().encodeABI();
             processTx(data,dithereumContract,web3GasPrice,gasLimit,0,SRDXSCAN_URL);
             
+            //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
+            //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
+        }
+        if(asset_To=='usdt'){ 
+            
+            var usdxContractInstance =  new myweb3.eth.Contract(dusdDthABI, dusdDthAddress, {
+                from: myAccountAddress, // default from address
+            });
+            const allowance = await usdxContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
+           
+            if(allowance<tAmount){
+                var result = usdxContractInstance.methods.approve(dithereumContract,approveAmount).send({
+                    from: myAccountAddress,
+                    to: dusdDthAddress,
+                    gasPrice: web3GasPrice,
+                    gasLimit: gasLimit,
+                    value : 0,       
+                });
+
+                var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
+                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,SRDXSCAN_URL);
+               
+            }else{
+                var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
+                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,SRDXSCAN_URL);
+            }
+
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
         }
