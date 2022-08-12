@@ -768,16 +768,16 @@ const fetchResponse =  await fetch(customURL,requestOptions);
     
 const edata = await fetchResponse.json(); 
 
-if(edata.success==false){
-    alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
-    return false;
-}
- if(edata.success==true){
-     if(edata.kyc_status == false){
-        alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
-        return false;
-     }
- }
+// if(edata.success==false){
+//     alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
+//     return false;
+// }
+//  if(edata.success==true){
+//      if(edata.kyc_status == false){
+//         alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
+//         return false;
+//      }
+//  }
 
 
 
@@ -861,7 +861,22 @@ if(edata.success==false){
         }
         
     }
-
+    if(network_From=='srdx'){
+        if(asset_Name=='srdx'){
+            if(tokenAmount<0.0025){
+                alertify.alert("Warning","Minimum Amount is 0.0025");
+                return false;
+            }
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' SRDX (Sardis-x Network) to ' +  tokenAmount +' SRDS (Sardis Network)';
+        }
+        if(asset_Name=='dusd'){
+            if(tokenAmount<0.0025){
+                alertify.alert("Warning","Minimum Amount is 0.0025");
+                return false;
+            }
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDX (Sardis-x Network) to ' +  tokenAmount +' USDT (Binance Network)';
+        }
+    }
 
 
     if(network_From=='tsrdx'){
@@ -1101,7 +1116,7 @@ if(edata.success==false){
         if(asset_To=='tsrds'){
             
             var data = ethContractInstance.methods.coinIn().encodeABI();
-            processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
+            processTx(data,dithereumContract,web3GasPrice,gasLimit,tokenAmount,TSRDXSCAN_URL);
             
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
@@ -1437,7 +1452,7 @@ if(edata.success==false){
         if(asset_To=='tsrdx'){
             
             var data = ethContractInstance.methods.coinIn().encodeABI();
-            processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDSSCAN_URL);
+            processTx(data,dithereumContract,web3GasPrice,gasLimit,tokenAmount,TSRDSSCAN_URL);
             
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
@@ -1455,7 +1470,7 @@ if(edata.success==false){
         if(asset_To=='srds'){
             
             var data = ethContractInstance.methods.coinIn().encodeABI();
-            processTx(data,dithereumContract,web3GasPrice,gasLimit,0,SRDXSCAN_URL);
+            processTx(data,dithereumContract,web3GasPrice,gasLimit,tokenAmount,SRDXSCAN_URL);
             
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
@@ -1487,6 +1502,39 @@ if(edata.success==false){
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
         }
+        if(asset_To=='busd'){
+            // bscContractInstance = new myweb3.eth.Contract(bscABI, bscContract, {
+            //     from: myAccountAddress, // default from address
+            // });
+            
+           
+            var gasLimit = 200000;
+            const web3GasPrice = await myweb3.eth.getGasPrice();
+            usdtContractInstance =  new myweb3.eth.Contract(dusdDthABI, dusdDthAddress, {
+                from: myAccountAddress, // default from address
+            });
+            const allowance = await usdtContractInstance.methods.allowance(myAccountAddress,dithereumContract).call();
+           
+            if(allowance<tAmount){
+                var result = usdtContractInstance.methods.approve(dithereumContract,approveAmount).send({
+                    from: myAccountAddress,
+                    to: dusdDthAddress,
+                    gasPrice: web3GasPrice,
+                    gasLimit: gasLimit,
+                    value : 0,       
+                });
+
+                var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
+                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
+               
+            }else{
+                var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
+                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
+            }
+
+            //var data = bscContractInstance.methods.tokenIn(busdBscAddress,tokenAmount,chainID).encodeABI();
+            //processTx(data,bscContract,web3GasPrice,gasLimit,0,BSCSCAN_URL);
+        }  
     }
     //srds network
     if(network_From=='srds'){
@@ -1500,7 +1548,7 @@ if(edata.success==false){
         if(asset_To=='srdx'){
             
             var data = ethContractInstance.methods.coinIn().encodeABI();
-            processTx(data,dithereumContract,web3GasPrice,gasLimit,0,SRDSSCAN_URL);
+            processTx(data,dithereumContract,web3GasPrice,gasLimit,tokenAmount,SRDSSCAN_URL);
             
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
