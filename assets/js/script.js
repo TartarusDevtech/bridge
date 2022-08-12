@@ -768,16 +768,16 @@ const fetchResponse =  await fetch(customURL,requestOptions);
     
 const edata = await fetchResponse.json(); 
 
- if(edata.success==false){
-     alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
-     return false;
+if(edata.success==false){
+    alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
+    return false;
+}
+ if(edata.success==true){
+     if(edata.kyc_status == false){
+        alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
+        return false;
+     }
  }
-  if(edata.success==true){
-      if(edata.kyc_status == false){
-         alertify.alert("Warning","Your wallet is not KYC verified. Please get KYC verification at <a style='text-decoration: underline;' href='https://kyc.sardisnetwork.com'>kyc.sardisnetwork.com</a>");
-         return false;
-      }
-  }
 
 
 
@@ -1107,7 +1107,7 @@ const edata = await fetchResponse.json();
     //tsrdx network
     if(network_From=='tsrdx'){
 	console.log("Selected- network_From, asset_To",network_From, asset_To);
-        ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {	
+        ethContractInstance = new myweb3.eth.Contract(tsrdxABI, tsrdxContract, {	
             from: myAccountAddress, // default from address
         });
        
@@ -1116,7 +1116,7 @@ const edata = await fetchResponse.json();
         if(asset_To=='tsrds'){
             
             var data = ethContractInstance.methods.coinIn().encodeABI();
-            processTx(data,dithereumContract,web3GasPrice,gasLimit,tokenAmount,TSRDXSCAN_URL);
+            processTx(data,tsrdxContract,web3GasPrice,gasLimit,tokenAmount,TSRDXSCAN_URL);
             
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
@@ -1443,7 +1443,7 @@ const edata = await fetchResponse.json();
     //tsrds network
     if(network_From=='tsrds'){
 	console.log("Selected- network_From, asset_To",network_From, asset_To);
-        ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {	
+        ethContractInstance = new myweb3.eth.Contract(tsrdsABI, tsrdsContract, {	
             from: myAccountAddress, // default from address
         });
        
@@ -1452,7 +1452,7 @@ const edata = await fetchResponse.json();
         if(asset_To=='tsrdx'){
             
             var data = ethContractInstance.methods.coinIn().encodeABI();
-            processTx(data,dithereumContract,web3GasPrice,gasLimit,tokenAmount,TSRDSSCAN_URL);
+            processTx(data,tsrdsContract,web3GasPrice,gasLimit,tokenAmount,TSRDSSCAN_URL);
             
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
