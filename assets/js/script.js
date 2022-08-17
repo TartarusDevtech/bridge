@@ -520,18 +520,18 @@ async function addNetowrk(network){
             try {
                 await ethereum.request({
                     method: 'wallet_switchEthereumChain',                    
-                    params: [{ chainId: '0x7d6' }], // , testnet = 0x2d5c
+                    params: [{ chainId: '0x2cf8' }], // , 0x7d6
                 });
-		        chainID = 2006; 
+		        chainID = 11512; //2006 
             } catch (switchError) {
                 // This error code indicates that the chain has not been added to MetaMask.
                 if (switchError.code === 4902) {
                 try {
                     await ethereum.request({
                         method: 'wallet_addEthereumChain',                    
-                        params: [{ chainId: '0x7d6', rpcUrl: 'https://mainnet-rpc.sardischain.com/' /* ... */ }],     blockExplorerUrls: ['https://sardischain.com/'] // mainnet 
+                        params: [{ chainId: '0x2cf8', rpcUrl: 'https://payment-rpc.sardisnetwork.com' /* ... */ }],     blockExplorerUrls: ['https://payment-mainnet.sardisnetwork.com/'] // mainnet 
                     });
-                    chainID = 2006; 
+                    chainID = 11512; //2006; 
                 } catch (addError) {
                     // handle "add" error
                 }
@@ -1539,7 +1539,7 @@ if(edata.success==false){
     //srds network
     if(network_From=='srds'){
 	console.log("Selected- network_From, asset_To",network_From, asset_To);
-        ethContractInstance = new myweb3.eth.Contract(dithereumABI, dithereumContract, {	
+        ethContractInstance = new myweb3.eth.Contract(paymentBridgeABI, paymentBridgeContract, {	
             from: myAccountAddress, // default from address
         });
        
@@ -1548,7 +1548,7 @@ if(edata.success==false){
         if(asset_To=='srdx'){
             
             var data = ethContractInstance.methods.coinIn().encodeABI();
-            processTx(data,dithereumContract,web3GasPrice,gasLimit,tokenAmount,SRDSSCAN_URL);
+            processTx(data,paymentBridgeContract,web3GasPrice,gasLimit,tokenAmount,SRDSSCAN_URL);
             
             //var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
             //processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL); 
