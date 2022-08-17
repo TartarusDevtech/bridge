@@ -67,8 +67,8 @@ const htDthABI = JSON.parse('[{"inputs":[],"payable":false,"stateMutability":"no
 
 var usdtContractInstance,usdcContractInstance,daiContractInstance,paxContractInstance;
 
-const ETHERSCAN_URL = 'https://rinkeby.etherscan.io/tx/';
-const BSCSCAN_URL = 'https://testnet.bscscan.com/tx/';
+const ETHERSCAN_URL = 'https://etherscan.io/tx/';
+const BSCSCAN_URL = 'https://bscscan.com/tx/';
 const POLYSCAN_URL = 'https://mumbai.polygonscan.com/tx/';
 const HECOSCAN_URL = 'https://testnet.hecoinfo.com/tx/';
 const DITHERSCAN_URL = 'https://contract-testnet.sardisnetwork.com/tx/';
