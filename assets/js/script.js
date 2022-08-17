@@ -1,9 +1,9 @@
 var myAccountAddress,contractInstance;
-var network_From = 'tsrdx';
-var network_To = 'tsrds';
-var asset_Name = 'tsrdx';
-var asset_To = 'tsrds';
-var chainID = 11612;
+var network_From = 'srdx';
+var network_To = 'srds';
+var asset_Name = 'srdx';
+var asset_To = 'srds';
+var chainID = 51712;
 var global = {
 	tronUserAddress : '',
 	tronUserAddressHex : '',
@@ -72,7 +72,7 @@ async function checkAccount() {
 }
 setTimeout(checkAccount, 500);
 $('document').ready(function(){
-    addNetowrk('tSRDX');
+    addNetowrk('SRDX');
 });
 //get short user address
 function getUserAddress(userAddress){
