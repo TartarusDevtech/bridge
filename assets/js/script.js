@@ -1004,7 +1004,7 @@ if(edata.success==false){
         });
         
         
-        var gasLimit = 200000;
+        var gasLimit = 500000;
         const web3GasPrice = await myweb3.eth.getGasPrice();
         if(asset_Name=='eth'){
               var data = ethContractInstance.methods.coinIn().encodeABI();
