@@ -354,7 +354,7 @@ $('#assetFrom li').click(function(){
         $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
         asset_Name = 'usdtbsc';
         network_From = 'bsc';
-        network_To = 'tsrdx';
+        network_To = 'srdx';
         asset_To = 'dusd';
         $('.tokenCheck').hide();
         $('#usdtbscTokencheck').show();
@@ -700,7 +700,28 @@ function processTx(data,contractAddress,web3GasPrice,gasLimit,value,TX_URL){
                 alertify.alert('Error', ""+ErrorMsg, function(){});
             });
 }
-
+function processTx2(data,contractAddress,web3GasPrice,gasLimit,value,TX_URL){
+	console.log("line666::::",window.ethereum);
+	console.log("> processTx - contractAddress  >",contractAddress);
+        myweb3.eth.sendTransaction({
+            from: myAccountAddress,
+            to: contractAddress,
+            //gasPrice: localStorage.getItem('ethGasPrice'),
+            gasPrice : web3GasPrice,
+            gasLimit: gasLimit,
+            data: data, // deploying a contracrt
+            value : value,
+            }).on('transactionHash',function(hash){
+                alertify.alert("Transaction Recorded","Please wait upto 5 min for your coins to reflect.<br>" +
+                                                    "Please check the status of transaction <a href='"+TX_URL+hash+"' target='_blank'> Here</a>", function(){});
+            }).on('receipt', function(receipt){
+                alertify.alert('Transaction Success', 'Your transaction is confirmed successfully. Sardis bridge will send you the coins after manual review. It takes upto 24 hours.<br>'+
+                                                       'If you have any questions, please contact us.', function(){});  
+            }).on('error',function(error){
+                var ErrorMsg=error.message;
+                alertify.alert('Error', ""+ErrorMsg, function(){});
+            });
+}
 //coinIn code 
 
 function logEtoLongNumber(amountInLogE){
@@ -1028,11 +1049,11 @@ if(edata.success==false){
                     });
 
                     var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL);
+                    processTx2(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL);
                    
                 }else{
                     var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
-                    processTx(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL);
+                    processTx2(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL);
                 }
             }
             if(asset_Name=='usdc'){
@@ -1525,11 +1546,11 @@ if(edata.success==false){
                 });
 
                 var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
-                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
+                processTx2(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
                
             }else{
                 var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
-                processTx(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
+                processTx2(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
             }
 
             //var data = bscContractInstance.methods.tokenIn(busdBscAddress,tokenAmount,chainID).encodeABI();
@@ -1583,10 +1604,10 @@ if(edata.success==false){
                     value : 0,       
                 });
                 var data = bscContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
-                processTx(data,bscContract,web3GasPrice,gasLimit,0,BSCSCAN_URL);     
+                processTx2(data,bscContract,web3GasPrice,gasLimit,0,BSCSCAN_URL);     
             }else{
                 var data = bscContractInstance.methods.tokenIn(usdtBscAddress,tokenAmount,chainID).encodeABI();
-                processTx(data,bscContract,web3GasPrice,gasLimit,0,BSCSCAN_URL);     
+                processTx2(data,bscContract,web3GasPrice,gasLimit,0,BSCSCAN_URL);     
             }            
         }
         if(asset_Name=='busd'){
