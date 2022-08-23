@@ -341,7 +341,7 @@ $('#assetFrom li').click(function(){
         asset_Name = 'usdt';
         asset_To = 'dusd';
         network_From = 'eth';
-        network_To = 'tsrdx';
+        network_To = 'srdx';
         $('.tokenCheck').hide();
         $('#usdtTokencheck').show();
         addNetowrk('ETH');
