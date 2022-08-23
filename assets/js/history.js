@@ -108,7 +108,8 @@ async function getHistory(){
                 statusIcon = '<th scope="row"><span class="text-danger" data-toggle="tooltip" data-placement="top" title="Cancel"><i class="fa fa-times" aria-hidden="true"></i></span></th>';
             }
             if(fee==0){
-                fee = '100% Discount';
+                //fee = '100% Discount';
+		    fee = '0.00';
             }else{
                 fee = fee + ' ' + fromCurrency;
             }
