@@ -36,13 +36,14 @@ if(window.ethereum){
 async function checkAccount() {
     if (window.ethereum) {
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-    
+        
             if (accounts == null || accounts.length == 0) {
                 console.log("NO ACCOUNT CONNECTED");
             } else {
                 if (myAccountAddress != accounts[0]) {
                     myAccountAddress = accounts[0];                    
                 }
+        
                 const shortAddress = getUserAddress(myAccountAddress);
                 $('#connectWallet,#connectWallet1').html(shortAddress);
                 $('#connectWallet,#connectWallet1').attr("href", "https://etherscan.io/address/"+myAccountAddress).attr('target','_blank');
@@ -125,8 +126,10 @@ async function getHistory(){
             if(toChain==128){ to_network = "Huobi"; }  
             if(toChain==137){ to_network = "Polygon"; } 
 
-            fromAmount = fromAmount/1e18    ;
+            fromAmount = fromAmount/1e18;
             toAmount = toAmount/1e18;
+            fromAmount = fromAmount.toFixed(6);
+            toAmount = toAmount.toFixed(6);
             $('#historyTable').append('<tr> '+ statusIcon+
                                         '<td> <div>  <div class="coin-price">  '+fromAmount+' '+ fromCurrency + '   </div>  <div class="address">'+getUserAddress(userWallet)+' ('+from_network+')</span></div>   </div> </td>'+
                                         '<td> <div>  <div class="coin-price">  '+toAmount+' '+ toCurrency + '  </div>  <div class="address">'+getUserAddress(userWallet)+' ('+to_network+')</span></div>   </div> </td>'+
