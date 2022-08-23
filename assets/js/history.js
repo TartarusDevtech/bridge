@@ -78,19 +78,21 @@ async function getHistory(){
     const edata = await fetchResponse.json();  
     console.log(edata); 
     if(edata.result == 'success'){
+        $('#historyTable').html('');
         const txData = edata.data;
         txData.forEach(element => {
             console.log(element);
-            const status = element.status;
-            const amount = element.fromAmount;
-            const amount_recived = element.toAmount;
-            var fee = element.txnFee;
-            const orderID = element.orderID;
+            var fromAmount = element.fromAmount;
             const fromChain = element.fromChain;
-            const toChain = element.fromChain;
-            const toCurrency = element.toCurrency;
             const fromCurrency = element.fromCurrency;
             const fromTxnHash = element.fromTxnHash;
+            const orderID = element.orderID;
+            const status = element.status;
+            var toAmount = element.toAmount;
+            const toChain = element.toChain;
+            const toCurrency = element.toCurrency;
+            const toTxnHash = element.toTxnHash;
+            var fee = element.txnFee;
             const userWallet = element.userWallet;
             var to_network = "";
             var from_network = "";
@@ -105,23 +107,29 @@ async function getHistory(){
                 statusIcon = '<th scope="row"><span class="text-danger" data-toggle="tooltip" data-placement="top" title="Cancel"><i class="fa fa-times" aria-hidden="true"></i></span></th>';
             }
             if(fee==0){
-                fee = fee + ' 100% Discount';
+                fee = '100% Discount';
+            }else{
+                fee = fee + ' ' + fromCurrency;
             }
             if(fromChain==1){  from_network= "ETH"; }
-            if(fromChain==24){ from_network="DTH";  }
+            if(fromChain==11512){ from_network="SRDS";  }
+            if(fromChain==51712){ from_network="SRDX";  }
             if(fromChain==56){ from_network = "BSC";} 
             if(fromChain==128){ from_network = "Huobi"; }  
             if(fromChain==137){ from_network = "Polygon"; } 
 
             if(toChain==1){  to_network= "ETH"; }
-            if(toChain==24){ to_network="DTH";  }
+            if(toChain==11512){ to_network="SRDS";  }
+            if(toChain==51712){ to_network="SRDX";  }
             if(toChain==56){ to_network = "BSC";} 
             if(toChain==128){ to_network = "Huobi"; }  
             if(toChain==137){ to_network = "Polygon"; } 
 
+            fromAmount = fromAmount/1e18    ;
+            toAmount = toAmount/1e18;
             $('#historyTable').append('<tr> '+ statusIcon+
-                                        '<td> <div>  <div class="coin-price">  '+amount+' '+ fromCurrency + '   </div>  <div class="address">'+getUserAddress(userWallet)+' ('+from_network+')</span></div>   </div> </td>'+
-                                        '<td> <div>  <div class="coin-price">  '+amount_recived+' '+ toCurrency + '  </div>  <div class="address">'+getUserAddress(userWallet)+' ('+to_network+')</span></div>   </div> </td>'+
+                                        '<td> <div>  <div class="coin-price">  '+fromAmount+' '+ fromCurrency + '   </div>  <div class="address">'+getUserAddress(userWallet)+' ('+from_network+')</span></div>   </div> </td>'+
+                                        '<td> <div>  <div class="coin-price">  '+toAmount+' '+ toCurrency + '  </div>  <div class="address">'+getUserAddress(userWallet)+' ('+to_network+')</span></div>   </div> </td>'+
                                         '<td> <div>  <div class="coin-price">  '+fee +' </div> </div> </td>'+
                                         '<td> <div>  <div class="address">'+orderID+'</div> </div> </td> </tr>');
         });
