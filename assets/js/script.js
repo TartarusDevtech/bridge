@@ -1028,14 +1028,15 @@ if(edata.success==false){
         var gasLimit = 500000;
         const web3GasPrice = await myweb3.eth.getGasPrice();
         if(asset_Name=='eth'){
-	      var tokenAmountETH = tAmount*1e6;
+	      
 		
               var data = ethContractInstance.methods.coinIn().encodeABI();
-              processTx(data,ethereumContract,web3GasPrice,gasLimit,tokenAmountETH,ETHERSCAN_URL);
+              processTx(data,ethereumContract,web3GasPrice,gasLimit,tokenAmount,ETHERSCAN_URL);
         }
         if(asset_Name=='usdt' || asset_Name=='usdc' || asset_Name=='dai' || asset_Name=='pax'){          
             
-            if(asset_Name=='usdt'){    
+            if(asset_Name=='usdt'){  
+		    var tokenAmountUSDT = tAmount*1e6;
                 usdtContractInstance =  new myweb3.eth.Contract(usdtEthABI, usdtEthAddress, {
                     from: myAccountAddress, // default from address
                 });
@@ -1050,11 +1051,11 @@ if(edata.success==false){
                         value : 0,       
                     });
 
-                    var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
+                    var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmountUSDT,chainID).encodeABI();
                     processTx2(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL);
                    
                 }else{
-                    var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmount,chainID).encodeABI();
+                    var data = ethContractInstance.methods.tokenIn(usdtEthAddress,tokenAmountUSDT,chainID).encodeABI();
                     processTx2(data,ethereumContract,web3GasPrice,gasLimit,0,ETHERSCAN_URL);
                 }
             }
