@@ -131,8 +131,8 @@ $('#assetFrom li').click(function(){
         addNetowrk('tSRDX');
         $('#receiveTokenImg').attr('src','assets/img/srdx.png');
         $('#reciveName').html('tSRDS');
-        $('#feeText').html('(Fee 10$ of tSRDS)');
-        $('#feeText').show();
+        //$('#feeText').html('(Fee 10$ of tSRDS)');
+        //$('#feeText').show();
     }
     if(name=="tsrds"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> tSRDS (Sardis Network)');
@@ -146,8 +146,8 @@ $('#assetFrom li').click(function(){
         addNetowrk('tSRDS');
         $('#receiveTokenImg').attr('src','assets/img/srdx.png');
         $('#reciveName').html('tSRDX');
-        $('#feeText').html('(Fee 10$ of tSRDS)');
-        $('#feeText').show();
+        //$('#feeText').html('(Fee 10$ of tSRDS)');
+        //$('#feeText').show();
     }
     if(name=="srdx"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> SRDX (Sardis-x Network)');
@@ -161,8 +161,8 @@ $('#assetFrom li').click(function(){
         addNetowrk('SRDX');
         $('#receiveTokenImg').attr('src','assets/img/srdx.png');
         $('#reciveName').html('SRDS');
-        $('#feeText').html('(Fee 10$ of SRDS)');
-        $('#feeText').show();
+       // $('#feeText').html('(Fee 10$ of SRDS)');
+        //$('#feeText').show();
     }
     if(name=="srds"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> SRDS (Sardis Network)');
@@ -176,8 +176,8 @@ $('#assetFrom li').click(function(){
         addNetowrk('SRDS');
         $('#receiveTokenImg').attr('src','assets/img/srdx.png');
         $('#reciveName').html('SRDX');
-        $('#feeText').html('(Fee 10$ of SRDS)');
-        $('#feeText').show();
+        //$('#feeText').html('(Fee 10$ of SRDS)');
+       // $('#feeText').show();
     }
     if(name=="eth"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
