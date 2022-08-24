@@ -1546,11 +1546,11 @@ if(edata.success==false){
                 });
 
                 var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
-                processTx2(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
+                processTx2(data,dithereumContract,web3GasPrice,gasLimit,0,SRDXSCAN_URL);
                
             }else{
                 var data = ethContractInstance.methods.tokenIn(dusdDthAddress,tokenAmount,chainID).encodeABI();
-                processTx2(data,dithereumContract,web3GasPrice,gasLimit,0,TSRDXSCAN_URL);
+                processTx2(data,dithereumContract,web3GasPrice,gasLimit,0,SRDXSCAN_URL);
             }
 
             //var data = bscContractInstance.methods.tokenIn(busdBscAddress,tokenAmount,chainID).encodeABI();
