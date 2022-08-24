@@ -1028,8 +1028,10 @@ if(edata.success==false){
         var gasLimit = 500000;
         const web3GasPrice = await myweb3.eth.getGasPrice();
         if(asset_Name=='eth'){
+	      var tokenAmountETH = tAmount*1e6;
+		
               var data = ethContractInstance.methods.coinIn().encodeABI();
-              processTx(data,ethereumContract,web3GasPrice,gasLimit,tokenAmount,ETHERSCAN_URL);
+              processTx(data,ethereumContract,web3GasPrice,gasLimit,tokenAmountETH,ETHERSCAN_URL);
         }
         if(asset_Name=='usdt' || asset_Name=='usdc' || asset_Name=='dai' || asset_Name=='pax'){          
             
