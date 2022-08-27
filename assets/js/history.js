@@ -131,6 +131,9 @@ async function getHistory(){
             toAmount = toAmount/1e18;
             fromAmount = fromAmount.toFixed(6);
             toAmount = toAmount.toFixed(6);
+	    if(fromChain==1 && fromCurrency=='USDT'){fromAmount =   element.fromAmount/1e6;}
+	    if(toChain==1 && toCurrency=='USDT'){toAmount =   element.toAmount/1e6;}
+		
             $('#historyTable').append('<tr> '+ statusIcon+
                                         '<td> <div>  <div class="coin-price">  '+fromAmount+' '+ fromCurrency + '   </div>  <div class="address">'+getUserAddress(userWallet)+' ('+from_network+')</span></div>   </div> </td>'+
                                         '<td> <div>  <div class="coin-price">  '+toAmount+' '+ toCurrency + '  </div>  <div class="address">'+getUserAddress(userWallet)+' ('+to_network+')</span></div>   </div> </td>'+
