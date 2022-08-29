@@ -83,6 +83,8 @@ async function getHistory(){
         const txData = edata.data;
         txData.forEach(element => {
             console.log(element);
+            var timeStamp = new Date(element.updationTimestamp);
+            var nDate = timeStamp.getUTCFullYear()+'/'+ timeStamp.getMonth()+'/' +timeStamp.getDate() + ' ' + timeStamp.getHours()+':'+timeStamp.getMinutes()+':'+timeStamp.getSeconds();
             var fromAmount = element.fromAmount;
             const fromChain = element.fromChain;
             const fromCurrency = element.fromCurrency;
@@ -138,7 +140,7 @@ async function getHistory(){
                                         '<td> <div>  <div class="coin-price">  '+fromAmount+' '+ fromCurrency + '   </div>  <div class="address">'+getUserAddress(userWallet)+' ('+from_network+')</span></div>   </div> </td>'+
                                         '<td> <div>  <div class="coin-price">  '+toAmount+' '+ toCurrency + '  </div>  <div class="address">'+getUserAddress(userWallet)+' ('+to_network+')</span></div>   </div> </td>'+
                                         '<td> <div>  <div class="coin-price">  '+fee +' </div> </div> </td>'+
-                                        '<td> <div>  <div class="address">'+orderID+'</div> </div> </td> </tr>');
+                                        '<td> <div>  <div class="address">'+nDate+'</div> </div> </td> </tr>');
         });
     }else{
         $('#historyTable').html('<tr><td colspan="5">No Records Found.</td></tr>');
