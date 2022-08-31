@@ -181,7 +181,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="eth"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETHX (Sardis-x Network)');
         $('.tokenCheck').hide();
         $('#ethTokencheck').show();
         asset_Name = 'eth';
@@ -190,7 +190,7 @@ $('#assetFrom li').click(function(){
         network_To ='srdx';
         addNetowrk('ETH');
         $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
-        $('#reciveName').html('ETH');
+        $('#reciveName').html('ETHX');
         $('#feeText').hide();
     }
     if(name=="tsrdxeth"){
@@ -209,7 +209,7 @@ $('#assetFrom li').click(function(){
     }
     if(name=="bnb"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Binance Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/bnb-logo.png"> BNBX (Sardis-x Network)');
         asset_Name = 'bnb';
         asset_To = 'srdx';
         network_From = 'bsc';
@@ -217,7 +217,7 @@ $('#assetFrom li').click(function(){
         $('.tokenCheck').hide();
         $('#bscTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/bnb-logo.png');
-        $('#reciveName').html('BNB');
+        $('#reciveName').html('BNBX');
         $('#feeText').hide();
         addNetowrk('BNB');
     }
