@@ -80,3 +80,5 @@ const TRONSCAN_URL = 'https://shasta.tronscan.io/#/transaction/';
 
 const myToken = '9SBUCVDXFYGZJ3K4M6P7Q8RATBUCWEXFYH2J3K5N6P7R9SATCVDWEYGZH2';
 const customURL = 'https://kyc.sardisnetwork.com/index.php?route=api/custom';
+const ethPriceAPI = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd';
+const bnbPriceAPI = 'https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd';
