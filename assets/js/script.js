@@ -9,6 +9,8 @@ var global = {
 	tronUserAddressHex : '',
 	loggedIn : false
 }
+var ethPrice = 0.00;
+var bnbPrice = 0.00;
 if(window.ethereum){
     console.log(">>>>Window.ethereum >>>>",window.ethereum);
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -116,7 +118,7 @@ $("#connectWallet,#connectWallet1").click(async function(e){
 });
 
 //token select 
-$('#assetFrom li').click(function(){
+$('#assetFrom li').click(async function(){
     var name = $(this).data('name');
     console.log(">>>@@@@>>> name >>>",name);
     if(name=="tsrdx"){
@@ -133,6 +135,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('tSRDS');
         //$('#feeText').html('(Fee 10$ of tSRDS)');
         //$('#feeText').show();
+        $('#reciveToken').html('');
     }
     if(name=="tsrds"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> tSRDS (Sardis Network)');
@@ -148,6 +151,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('tSRDX');
         //$('#feeText').html('(Fee 10$ of tSRDS)');
         //$('#feeText').show();
+        $('#reciveToken').html('');
     }
     if(name=="srdx"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> SRDX (Sardis-x Network)');
@@ -163,6 +167,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('SRDS');
        // $('#feeText').html('(Fee 10$ of SRDS)');
         //$('#feeText').show();
+        $('#reciveToken').html('');
     }
     if(name=="srds"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/srdx.png"> SRDS (Sardis Network)');
@@ -176,12 +181,28 @@ $('#assetFrom li').click(function(){
         addNetowrk('SRDS');
         $('#receiveTokenImg').attr('src','assets/img/srdx.png');
         $('#reciveName').html('SRDX');
+        $('#reciveToken').html('');
         //$('#feeText').html('(Fee 10$ of SRDS)');
        // $('#feeText').show();
     }
+    // if(name=="eth"){
+    //     $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
+    //     $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETHX (Sardis-x Network)');
+    //     $('.tokenCheck').hide();
+    //     $('#ethTokencheck').show();
+    //     asset_Name = 'eth';
+    //     asset_To = 'srdx';
+    //     network_From = 'eth';
+    //     network_To ='srdx';
+    //     addNetowrk('ETH');
+    //     $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
+    //     $('#reciveName').html('ETHX');
+    //     $('#feeText').hide();
+    // }
+    // new srdx code 6-9-2022
     if(name=="eth"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/eth-icon.svg"> ETHX (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/srdx.png"> SRDX (Sardis-x Network)');
         $('.tokenCheck').hide();
         $('#ethTokencheck').show();
         asset_Name = 'eth';
@@ -189,9 +210,14 @@ $('#assetFrom li').click(function(){
         network_From = 'eth';
         network_To ='srdx';
         addNetowrk('ETH');
-        $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
-        $('#reciveName').html('ETHX');
+        $('#receiveTokenImg').attr('src','assets/img/srdx.png');
+        $('#reciveName').html('SRDX');
         $('#feeText').hide();
+        $('#reciveToken').html('');
+        const fetchResponse =  await fetch(ethPriceAPI);
+        const edata = await fetchResponse.json(); 
+        ethPrice = edata.ethereum.usd;
+
     }
     if(name=="tsrdxeth"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/eth-icon.svg"> ETH (Sardix-x Network)');
@@ -206,10 +232,26 @@ $('#assetFrom li').click(function(){
         $('#receiveTokenImg').attr('src','assets/img/eth-icon.svg');
         $('#reciveName').html('ETH');
         $('#feeText').hide();
+        $('#reciveToken').html('');
     }
+    // new srdx code 6-9-2022
+    // if(name=="bnb"){
+    //     $('#assetFromUL').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Binance Network)');
+    //     $('#assetToUl').html('<img class="icons" src="assets/img/bnb-logo.png"> BNBX (Sardis-x Network)');
+    //     asset_Name = 'bnb';
+    //     asset_To = 'srdx';
+    //     network_From = 'bsc';
+    //     network_To = 'srdx';
+    //     $('.tokenCheck').hide();
+    //     $('#bscTokencheck').show();
+    //     $('#receiveTokenImg').attr('src','assets/img/bnb-logo.png');
+    //     $('#reciveName').html('BNBX');
+    //     $('#feeText').hide();
+    //     addNetowrk('BNB');
+    // }
     if(name=="bnb"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Binance Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/bnb-logo.png"> BNBX (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/srdx.png"> SRDX (Sardis-x Network)');
         asset_Name = 'bnb';
         asset_To = 'srdx';
         network_From = 'bsc';
@@ -217,9 +259,13 @@ $('#assetFrom li').click(function(){
         $('.tokenCheck').hide();
         $('#bscTokencheck').show();
         $('#receiveTokenImg').attr('src','assets/img/bnb-logo.png');
-        $('#reciveName').html('BNBX');
+        $('#reciveName').html('SRDX');
         $('#feeText').hide();
         addNetowrk('BNB');
+        $('#reciveToken').html('');
+        const fetchResponse =  await fetch(bnbPriceAPI);
+        const edata = await fetchResponse.json(); 
+        bnbPrice = edata.binancecoin.usd;
     }
     if(name=="dbnb"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/bnb-logo.png"> BNB (Sardis-x Network)');
@@ -234,6 +280,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('BNB');
         $('#feeText').hide();        
         addNetowrk('tSRDX');
+        $('#reciveToken').html('');
     }
     if(name=="trx"){        
         $('#assetFromUL').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (TRON Network)');
@@ -249,6 +296,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('TRX');
         $('#feeText').hide();
         addNetowrk('TRX');
+        $('#reciveToken').html('');
     }
     if(name=="dtrx"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tron-logo.png"> TRX (Sardis-x Network)');
@@ -264,6 +312,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('TRX');
         $('#feeText').hide();
         addNetowrk('TRX');
+        $('#reciveToken').html('');
     }
     if(name=="matic"){
         asset_Name = 'matic';
@@ -278,6 +327,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('MATIC');
         $('#feeText').hide();
         addNetowrk('POLYGON');
+        $('#reciveToken').html('');
     }
     if(name=="dmatic"){
         asset_Name = 'dmatic';
@@ -292,6 +342,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('MATIC');
         $('#feeText').hide();
         addNetowrk('tSRDX');
+        $('#reciveToken').html('');
     }
     if(name=="ht"){
         asset_Name = 'ht';
@@ -305,7 +356,8 @@ $('#assetFrom li').click(function(){
         $('#receiveTokenImg').attr('src','assets/img/heco-logo.png');
         $('#reciveName').html('HT');
         $('#feeText').hide();
-        addNetowrk('HECO');;
+        addNetowrk('HECO');
+        $('#reciveToken').html('');
     }
     if(name=="dht"){
         asset_Name = 'dht';
@@ -319,7 +371,8 @@ $('#assetFrom li').click(function(){
         $('#receiveTokenImg').attr('src','assets/img/heco-logo.png');
         $('#reciveName').html('HT');
         $('#feeText').hide();
-        addNetowrk('tSRDX');;
+        addNetowrk('tSRDX');
+        $('#reciveToken').html('');
     }
     if(name=="dusd"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
@@ -334,10 +387,11 @@ $('#assetFrom li').click(function(){
         $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
         $('#reciveName').html('USDT');        
         $('#feeText').hide();
+        $('#reciveToken').html('');
     }
     if(name=="usdt"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Ethereum Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/srdx.png"> SRDX (Sardis-x Network)');
         asset_Name = 'usdt';
         asset_To = 'dusd';
         network_From = 'eth';
@@ -345,13 +399,14 @@ $('#assetFrom li').click(function(){
         $('.tokenCheck').hide();
         $('#usdtTokencheck').show();
         addNetowrk('ETH');
-        $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
-        $('#reciveName').html('USDX');
+        $('#receiveTokenImg').attr('src','assets/img/srdx.png');
+        $('#reciveName').html('SRDX');
         $('#feeText').hide();
+        $('#reciveToken').html('');
     }
     if(name=="usdtbsc"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDT (Binance Network)');
-        $('#assetToUl').html('<img class="icons" src="assets/img/tether-usdt-logo.png"> USDX (Sardis-x Network)');
+        $('#assetToUl').html('<img class="icons" src="assets/img/srdx.png"> SRDX (Sardis-x Network)');
         asset_Name = 'usdtbsc';
         network_From = 'bsc';
         network_To = 'srdx';
@@ -359,9 +414,10 @@ $('#assetFrom li').click(function(){
         $('.tokenCheck').hide();
         $('#usdtbscTokencheck').show();
         addNetowrk('BNB');
-        $('#receiveTokenImg').attr('src','assets/img/tether-usdt-logo.png');
-        $('#reciveName').html('USDX');
+        $('#receiveTokenImg').attr('src','assets/img/srdx.png');
+        $('#reciveName').html('SRDX');
         $('#feeText').hide();
+        $('#reciveToken').html('');
     }
     if(name=="usdc"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/usdc-logo.png"> USDC (Ethereum Network)');
@@ -376,6 +432,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('USDX');
         $('#feeText').hide();
         addNetowrk('ETH');
+        $('#reciveToken').html('');
     }
     if(name=="busd"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/busd-logo.png"> BUSD (Binance Network)');
@@ -390,6 +447,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('USDX');
         $('#feeText').hide();
         addNetowrk('BNB');
+        $('#reciveToken').html('');
     }
     if(name=="dai"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/dai-logo.png"> DAI (Ethereum Network)');
@@ -404,6 +462,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('USDX');
         $('#feeText').hide();
         addNetowrk('ETH');
+        $('#reciveToken').html('');
     }
     if(name=="pax"){
         $('#assetFromUL').html('<img class="icons" src="assets/img/pax-logo.png"> PAX (Ethereum Netowoek)');
@@ -418,6 +477,7 @@ $('#assetFrom li').click(function(){
         $('#reciveName').html('USDX');
         $('#feeText').hide();
         addNetowrk('ETH');
+        $('#reciveToken').html('');
     }
 });
 //add networks SARDIS
@@ -666,11 +726,25 @@ async function addNetowrk(network){
 
 }
 //token amount key press event 
-$('#tokenAmount').on('keyup keydown change', function(e){
+$('#tokenAmount').on('keyup keydown change', async function(e){
     if($(this).val() < 0 ){
         $(this).val(1);
     }else{
-        $('#reciveToken').html($(this).val());
+        if(network_From=='eth' & network_To=='srdx' & asset_Name=='eth' & asset_To=='srdx'){
+            
+            var amount = $(this).val();
+            amount = amount * ethPrice;
+            $('#reciveToken').html(amount.toFixed(4));
+
+        }else if(network_From=='bsc' & network_To=='srdx' & asset_Name=='bnb' & asset_To=='srdx'){
+            
+                var amount = $(this).val();
+                amount = amount * bnbPrice;
+                $('#reciveToken').html(amount.toFixed(4));
+        }else{
+            $('#reciveToken').html($(this).val());
+        }
+        
     } 
 
 });
@@ -817,35 +891,37 @@ if(edata.success==false){
                 alertify.alert("Warning","Minimum Amount is 0.0025");
                 return false;
             }   
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' ETH (Ethereum Network) to ' +  tokenAmount +' ETH (Sardis Network)';
+           // confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' ETH (Ethereum Network) to ' +  tokenAmount +' ETH (Sardis Network)';
+           var reciveToken = $('#reciveToken').text();
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +'  ETH (Ethereum Network) to ' +  reciveToken +' SRDX (Sardis Network)';
         }        
         if(asset_Name=='usdt'){
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             } 
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDT (Ethereum Network) to ' +  tokenAmount +' USDX (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDT (Ethereum Network) to ' +  tokenAmount +' SRDX (Sardis Network)';
         }
         if(asset_Name=='usdc'){
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDC (Ethereum Network) to ' +  tokenAmount +' USDX (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' USDC (Ethereum Network) to ' +  tokenAmount +' SRDX (Sardis Network)';
         }
         if(asset_Name=='dai'){
             if(tokenAmount<10){
                 alertify.alert("Warning","Minimum Amount is 10");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' DAI (Ethereum Network) to ' +  tokenAmount +' USDX (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' DAI (Ethereum Network) to ' +  tokenAmount +' SRDX (Sardis Network)';
         }
         if(asset_Name=='pax'){
             if(tokenAmount<0.01){
                 alertify.alert("Warning","Minimum Amount is 0.01");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' PAX (Ethereum Network) to ' +  tokenAmount +' USDX (Sardis Network)';
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' PAX (Ethereum Network) to ' +  tokenAmount +' SRDX (Sardis Network)';
         }
 
     }
@@ -960,7 +1036,9 @@ if(edata.success==false){
                 alertify.alert("Warning","Minimum Amount is 0.02");
                 return false;
             }
-            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' BNB (Binance Network) to ' +  tokenAmount +' BNB (Sardis Network)';
+            //confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' BNB (Binance Network) to ' +  tokenAmount +' BNB (Sardis Network)';
+            var reciveToken = $('#reciveToken').text();
+            confirmMessage = 'Are you sure you want to swap ? <br>' +  tokenAmount +' BNB (Binance Network) to ' +  reciveToken +' SRDX (Sardis Network)';
         }
 
         if(asset_Name=='usdtbsc'){
